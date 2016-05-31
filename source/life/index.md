@@ -1,0 +1,3 @@
+layout: life
+title: life
+---
