@@ -6,7 +6,7 @@ tags: [hexo] #文章标签，多于一项时用这种格式，只有一项时使
 
 ---
 
-# hexo安装环境准备
+# hexo静态博客环境安装
 ## 安装Node.js
 在 Windows7 64 环境下安装 Node.js 非常简单，仅须到[官网](https://nodejs.org/en/download/ "nodejs官网")下载安装文件并执行即可完成安装
 ![nodejs官网下载](/images/nodejs.jpg)
