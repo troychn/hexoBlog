@@ -25,8 +25,8 @@ git add | git add 命令可将该文件添加到缓存
 git status | git status 以查看在你上次提交之后是否有修改。加 -s 参数，以获得简短的结果输出。
 git commit | 执行 git commit 将缓存区内容添加到本地仓库中
 git push | 推送本地仓库的更新到远程仓库，语法git push [远程仓库名][本地分支][远程分支]
-git pull ｜ 抓取远程仓库所有分支更新并合并到本地仓库
-
+git pull | 抓取远程仓库所有分支更新并合并到本地仓库  
+  
 
 ##hexo环境安装
 Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。
