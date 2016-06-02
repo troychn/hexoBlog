@@ -13,7 +13,7 @@ tags: [hexo] #文章标签，多于一项时用这种格式，只有一项时使
 ![nodejs官网下载](/images/hexo-1/nodejs.jpg)
 ### 安装Git
 从[git官网](https://git-scm.com/download "git下载")下载git并执行即可完成安装。[安装过程](http://jingyan.baidu.com/article/90895e0fb3495f64ed6b0b50.html "windows安装过程")。安装完后，右击鼠标选择 git bash here
-![git容器](/images/hexo-1/git.png)
+![git窗口](/images/hexo-1/git.png)
 - Git教程：[Pro Git（中文版）](http://git.oschina.net/progit/ "git教程")
 - git基本操作：
 
