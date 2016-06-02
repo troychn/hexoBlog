@@ -14,7 +14,8 @@ timezone:                               #网站时区。Hexo 默认使用您电�
 ## 如果您的网站存放在子目录中，例如 http://yoursite.com/blog，则请将您的 url 设为 http://yoursite.com/blog 并把 root 设为 /blog/
 url: https://troychn.github.io/
 root: /
-permalink: :year/:month/:day/:title/
+#permalink: :year/:month/:day/:title/
+permalink: lc/:category/:year-:month-:day-:title.html
 permalink_defaults:
 
 # Directory 目录配置
@@ -45,7 +46,10 @@ highlight:                      #代码块的设置
 
 # Category & Tag  分类和标签的设置
 default_category: uncategorized   #默认分类         
-category_map:                     #分类别名
+category_map:                     #分类别名 category_map 是为了让url中尽量少出现中文，做的映射。如下配置
+#    编程: programming
+#    生活: life
+#    其他: other
 tag_map:                          #标签别名
 
 # Date / Time format
