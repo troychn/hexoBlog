@@ -6,14 +6,14 @@ tags: [hexo] #文章标签，多于一项时用这种格式，只有一项时使
 
 ---
 
-# hexo-Github Pages静态博客环境安装
-## 安装Node.js
+## hexo-Github Pages静态博客
+### 安装Node.js
 在 Windows7 64 环境下安装 Node.js 非常简单，仅须到[官网](https://nodejs.org/en/download/ "nodejs官网")下载安装文件并执行即可完成安装
-![nodejs官网下载](/images/nodejs.jpg)
-## 安装Git
+![nodejs官网下载](/images/hexo-1/nodejs.jpg)
+### 安装Git
 下载 msysgit 并执行即可完成安装。(上官网要翻墙，如果你的是64位，可以点击此处下载)
 怎么打开Git？安装完后，右击鼠标选择 git bash here
-![git容器](/images/git.png)
+![git容器](/images/hexo-1/git.png)
 - Git教程：[Pro Git（中文版）](http://git.oschina.net/progit/ "git教程")
 - git基本操作：
 
@@ -28,10 +28,10 @@ git push | 推送本地仓库的更新到远程仓库，语法git push [远程�
 git pull | 抓取远程仓库所有分支更新并合并到本地仓库  
   
 
-##hexo环境安装
+###hexo环境安装
 Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。
 
-### Hexo安装
+#### Hexo安装
 桌面右键鼠标，点击Git Bash Here，输入npm命令即可安装
 ```    
 npm install hexo-cli -g
@@ -39,14 +39,14 @@ npm install hexo --save
 #如果命令无法运行，可以尝试更换taobao的npm源，[http://npm.taobao.org](http://npm.taobao.org "淘宝npm源说明") ,请进入查看相关说明
 npm install -g cnpm --registry=https://registry.npm.taobao.org
 ```
-### Hexo初始化配置
+#### Hexo初始化配置
 安装完成后，根据自己喜好建立目录（如F:\Blog\Hexo），直接进入F:\Blog\Hexo文件夹下右键鼠标，点击Git Bash Here，进入Git命令框，执行以下操作。
 ```
 $ hexo init
 $ npm install
 ```
 安装 Hexo 完成后，Hexo 将会在指定文件夹中新建所需要的文件。Hexo文件夹下的目录如下：
-![hexo初始化目录](/images/hexo-dir.png)
+![hexo初始化目录](/images/hexo-1/hexo-dir.png)
 下面依次介绍上面各个文件或者目录的用途：
 - _config.yml 站点配置文件，很多全局配置都在这个文件中。
 - package.json 应用数据。从它可以看出hexo版本信息，以及它所默认或者说依赖的一些组件。
@@ -54,7 +54,7 @@ $ npm install
 - source 这个文件夹就是放文章的地方了，除了文章还有一些主要的资源，比如文章里的图片，文件等等东西。这个文件夹最好定期做一个备份，丢了它，整个站点就废了。
 - themes 主题文件夹。
 
-### 安装Hexo插件
+#### 安装Hexo插件
 如果想不出错，就将下面的插件都安装完。（如果用淘宝源，请把npm换成cnpm）
 ```
 npm install hexo-generator-index --save
@@ -71,24 +71,24 @@ npm install hexo-renderer-stylus@0.2 --save
 npm install hexo-generator-feed@1 --save
 npm install hexo-generator-sitemap@1 --save
 ```
-### 本地查看效果
+#### 本地查看效果
 执行下面语句，执行完即可登录localhost:4000查看效果
 ```
 hexo generate
 hexo server
 ```
 登录localhost:4000，即可看到本地的效果如下：
-![hexo初始化目录](/images/hexo-view.png)
+![hexo初始化目录](/images/hexo-1/hexo-view.png)
 
-## 将博客部署到Github Pages上
+### 将博客部署Github Pages上
 本地的博客已经搭建起来了，但是目前只可以通过本地服务查看我们的博客。现在需要做的就是把本地的博客发布到Github服务器上，通过Github Pages这个功能让别人也可以访问我们的博客，而Github Pages就帮我完成了这件事情。但是Github Pages的代码就是寄存在Github上面的。所以需要在Github上面创建一个新的项目。
-### 注册Github账户，创建项目代码库
+#### 注册Github账户创建代码库
 1. 访问[Github](http://www.github.com/)首页
 2. 点击右上角的 Sign Up，注册自己的账户
 3. 注册完登陆后，我们就创建一个我们自己的Github Pages项目。点击New repository.创建要点如下：
-![github reposity](/images/github-reposity.png)
+![github reposity](/images/hexo-1/github-reposity.png)
 
-### 配置SSH密钥
+#### 配置SSH密钥
 1. 看看是否存在SSH密钥(keys)
 首先，我们需要看看是否看看本机是否存在SSH keys,打开Git Bash,并运行:
 ```
@@ -125,11 +125,11 @@ The key's randomart image is:
 3. 在GitHub账户中添加你的公钥
 直接用文本打开当前用户目录下的.ssh/id_rsa.pub文件，复制文件中的内容
 登陆GitHub,进入你的Account Settings.
-![github settings](/images/github-settings.png)
+![github settings](/images/hexo-1/github-settings.png)
 选择New SSH Keys
-![github sshkey](/images/github-sshkey.png)
+![github sshkey](/images/hexo-1/github-sshkey.png)
 粘贴密钥，添加即可
-![github sshkey](/images/ithub-SSH-OK.png)
+![github sshkey](/images/hexo-1/ithub-SSH-OK.png)
 4. 测试SSH密钥
 可以输入下面的命令，看看设置是否成功，git@github.com的部分不要修改：
 ```
@@ -160,13 +160,13 @@ Warning: Permanently added 'github.com,192.30.252.120' (RSA) to the list of know
 GitHub Help - [Generating SSH Keys](https://help.github.com/articles/generating-an-ssh-key/ "Generating an SSH key")
 Error: [Permission denied (publickey)](https://help.github.com/articles/error-permission-denied-publickey/ "Permission denied (publickey)")
 
-### 将本地的Hexo文件更新到Github的库中
+#### 将本地Hexo文件更新到Github库中
 登录Github打开上面创建的的项目 username.github.io 复制地址
-![github sshkey](/images/cp-githubaddr.png)
+![github sshkey](/images/hexo-1/cp-githubaddr.png)
 打开你一开始创建的Hexo文件夹（如F:\Blog\Hexo），用记事本打开刚文件夹下的_config.yml文件
-![github sshkey](/images/git-gitml_4.png)
+![github sshkey](/images/hexo-1/git-gitml_4.png)
 在配置文件里作如下修改，保存
-![github sshkey](/images/cp-githubaddr-2.png)
+![github sshkey](/images/hexo-1/cp-githubaddr-2.png)
 在Hexo文件夹下执行，右击打开git bash here 执行以下命令 ：
 
 ```
@@ -174,10 +174,10 @@ hexo g -d
 ```
 
 执行完之后会让你输入github的账号和密码，输入完后就可以登录我们自己的部署在Github Pages服务器上的博客了。对应的地址是 username.github.io。
-![github sshkey](/images/username-passw.png)
+![github sshkey](/images/hexo-1/username-passw.png)
 在浏览器上输入自己的主页地址 （https://username.github.io/）username为你的github账号
 在浏览器上输入即可看到我们自己的博客，别人电脑输入也可以哦。
-![github sshkey](/images/view-cg.png)
+![github sshkey](/images/hexo-1/view-cg.png)
 
 到此利用github Pages 搭建hexo静态博客就成功了，下一篇准备美化我们的博客。
 
