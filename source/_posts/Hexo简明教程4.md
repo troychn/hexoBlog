@@ -1,5 +1,5 @@
 ---
-title: Hexo -简明教程(二)-hexo博客多PC间同步 #可以改成中文的，如“新文章”
+title: Hexo -简明教程(三)-hexo博客多PC间同步 #可以改成中文的，如“新文章”
 date: 2016-05-31 18:09:23 #发表日期，一般不改动
 categories: hexo #文章文类
 tags: [hexo] #文章标签，多于一项时用这种格式，只有一项时使用tags: blog
