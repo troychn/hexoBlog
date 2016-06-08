@@ -44,6 +44,11 @@ highlight:                      #代码块的设置
   auto_detect: false
   tab_replace:
 
+# 代码高亮主题
+# available: default | night
+available: night
+highlight_theme: night  
+
 # Category & Tag  分类和标签的设置
 default_category: uncategorized   #默认分类         
 category_map:                     #分类别名 category_map 是为了让url中尽量少出现中文，做的映射。如下配置

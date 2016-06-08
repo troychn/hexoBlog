@@ -33,7 +33,7 @@ Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（�
 
 #### Hexo安装
 桌面右键鼠标，点击Git Bash Here，输入npm命令即可安装
-```    
+```shell    
 npm install hexo-cli -g
 npm install hexo --save
 #如果命令无法运行，可以尝试更换taobao的npm源，[http://npm.taobao.org](http://npm.taobao.org "淘宝npm源说明") ,请进入查看相关说明
@@ -41,7 +41,7 @@ npm install -g cnpm --registry=https://registry.npm.taobao.org
 ```
 #### Hexo初始化配置
 安装完成后，根据自己喜好建立目录（如F:\Blog\Hexo），直接进入F:\Blog\Hexo文件夹下右键鼠标，点击Git Bash Here，进入Git命令框，执行以下操作。
-```
+```shell
 $ hexo init
 $ npm install
 ```
@@ -56,7 +56,7 @@ $ npm install
 
 #### 安装Hexo插件
 如果想不出错，就将下面的插件都安装完。（如果用淘宝源，请把npm换成cnpm）
-```
+```shell
 npm install hexo-generator-index --save
 npm install hexo-generator-archive --save
 npm install hexo-generator-category --save
@@ -97,7 +97,7 @@ $ cd ~/. ssh
 检查你本机用户home目录下是否存在.ssh目录
 如果，不存在此目录，则进行第二步操作，否则，你本机已经存在ssh公钥和私钥，可以略过第二步，直接进入第三步操作。
 2. 创建一对新的SSH密钥(keys)
-```
+```shell
 #输入 ssh-keygen -t rsa -C "xxxxx@126.com" 这将按照你提供的邮箱地址，创建一对密钥
 $ ssh-keygen -t rsa -C "xxxxx@126.com"
 Generating public/private rsa key pair.
@@ -132,11 +132,11 @@ The key's randomart image is:
 ![github sshkey](/images/hexo-1/ithub-SSH-OK.png)
 4. 测试SSH密钥
 可以输入下面的命令，看看设置是否成功，git@github.com的部分不要修改：
-```
+```shell
 $ ssh -T git@github.com
 ```
 如果是下面的反馈，表示成功：
-```
+```shell
 $ ssh -T git@github.com
 The authenticity of host 'github.com (192.30.252.123)' can't be established.
 RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.
@@ -146,7 +146,7 @@ Enter passphrase for key '/c/Users/Administrator/.ssh/id_rsa': 输入上面的�
 Hi troychn! You've successfully authenticated, but GitHub does not provide shell access.
 ```
 如果出现以下问题，没有权限
-```
+```shell
 $ ssh -T git@github.com
 The authenticity of host 'github.com (192.30.252.120)' can't be established.
 RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.
