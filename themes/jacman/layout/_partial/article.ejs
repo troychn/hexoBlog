@@ -20,26 +20,27 @@
     <%- partial('post/footer', {index: true}) %>
     </article>
 <% }else{ %>
-<section class="post" itemscope itemprop="blogitem">
-  <% if (item.link) { %> 
+<article class="post-expand <%= item.layout %>"" itemprop="articleBody">
+<%- partial('post/header-index') %>
+	<div style="padding: 0.5em 0.5em 0.5em 0.8em">
+	<% if (item.link) { %> 
     <a href="<%- item.link %>" target="_blank"> 
-  <% } else{ %>
-    <a href="<%- config.root %><%- item.path %>" title="<%= item.title %>" itemprop="url">
-  <% } %>
-    <h1 itemprop="name"><%= item.title %></h1>
-    <% if (desc){ %>
-     <% if(item.description){ %>
-      <p itemprop="description" ><%- item.description %></p>
-      <% } else if(item.excerpt){ %>
-       <p itemprop="description" ><%= strip_html(item.excerpt).replace(/^\s*/, '').replace(/\s*$/, '').substring(0, 140) %></p>
-      <% } else {%>
-           <p itemprop="description" ><%= strip_html(item.content).replace(/^\s*/, '').replace(/\s*$/, '').substring(0, 140) %></p>
-        <% } %>
-    <% } %>
-	<time datetime="<%= date_xml(item.date) %>" itemprop="datePublished"><%= item.date.format(config.date_format) %></time>	
-  </a>		
-	
-</section>
+	  <% } else{ %>
+		<a href="<%- config.root %><%- item.path %>" title="<%= item.title %>" itemprop="url">
+	  <% } %>
+		<% if (desc){ %>
+		 <% if(item.description){ %>
+		  <p itemprop="description" ><%- item.description %></p>
+		  <% } else if(item.excerpt){ %>
+		   <p itemprop="description" ><%= strip_html(item.excerpt).replace(/^\s*/, '').replace(/\s*$/, '').substring(0, 240) %></p>
+		  <% } else {%>
+			   <p itemprop="description" ><%= strip_html(item.content).replace(/^\s*/, '').replace(/\s*$/, '').substring(0, 240) %></p>
+			<% } %>
+		<% } %>
+		</a>
+   </div>	
+<%- partial('post/footer-index', {index: true}) %>
+</article>
 <% } %>
 
 
