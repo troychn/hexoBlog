@@ -17,10 +17,10 @@ menu:
 widgets: 
 - github-card
 - category
+- tag
+- hot
 - tagcloud
 - links
-- hot
-- tag
 #- douban
 - weibo
 - rss

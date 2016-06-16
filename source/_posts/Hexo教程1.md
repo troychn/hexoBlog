@@ -1,5 +1,5 @@
 ---
-title: Hexo - Hello World
+title: Hexo折腾体验感受
 categories: 测试 #文章文类
 tags: [文章] #文章标签，多于一项时用这种格式，只有一项时使用tags: blog
 ---
@@ -9,7 +9,7 @@ Welcome to [Hexo](https://hexo.io/)! This is your very first post. Check [docume
 
 ### Create a new post
 
-``` bash
+```bash
 $ hexo new "My New Post"
 ```
 

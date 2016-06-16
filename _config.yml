@@ -15,7 +15,7 @@ timezone:                               #网站时区。Hexo 默认使用您电�
 url: https://troychn.github.io/
 root: /
 #permalink: :year/:month/:day/:title/
-permalink: lc/:category/:year-:month-:day-:title.html
+permalink: :category/:year/:month/:day/:title.html
 permalink_defaults:
 
 # Directory 目录配置
