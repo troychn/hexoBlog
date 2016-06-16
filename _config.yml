@@ -81,7 +81,9 @@ stylus:
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repository: https://github.com/troychn/troychn.github.io.git
+  repository: 
+      github: git@github.com:troychn/troychn.github.io.git
+      coding: git@git.coding.net:troylc/troylc.git
   branch: master
   
 # Others
