@@ -3,8 +3,8 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site 网站
-title: troylc                           #网站标题
-subtitle: 爱生活爱编程                  #网站副标题
+title: troylc技术博客                   #网站标题
+subtitle: 爱生活爱编程，一起来进步吧！  #网站副标题
 description:  hello,every body!         #网站描述
 author: troylc                          #您的名字 
 language: zh-CN                         #网站使用的语言
@@ -12,7 +12,7 @@ timezone:                               #网站时区。Hexo 默认使用您电�
 
 # URL 网址
 ## 如果您的网站存放在子目录中，例如 http://yoursite.com/blog，则请将您的 url 设为 http://yoursite.com/blog 并把 root 设为 /blog/
-url: https://troychn.github.io/
+url: https://www.troylc.cc/
 root: /
 #permalink: :year/:month/:day/:title/
 permalink: :category/:year/:month/:day/:title.html
@@ -85,7 +85,13 @@ deploy:
       github: git@github.com:troychn/troychn.github.io.git
       coding: git@git.coding.net:troylc/troylc.git
   branch: master
-  
+
+# 自动生成sitemap
+#sitemap:
+#path: sitemap.xml
+#baidusitemap:
+#path: baidusitemap.xml
+
 # Others
 index_generator:
   per_page: 5 ##首页默认10篇文章标题 如果值为0不分页
