@@ -139,7 +139,7 @@ google_cse:
 ## title: search
 ## ---
 baidu_search:     ## http://zn.baidu.com/  极速体验版本http://zn.baidu.com/cse/wiki/index?category_id=25
-  enable: false
+  enable: true
   id: troylc.cc  ## e.g. "783281470518440642"  for your baidu search id
   site: http://zhannei.baidu.com/cse/site  ## your can change to your site instead of the default site
   
@@ -149,7 +149,7 @@ tinysou_search:     ## http://tinysou.com/
 
 #swiftype搜索
 swift_search:
-  enable: true
+  enable: false
 
 highlight:                      #代码块的设置
   enable: true

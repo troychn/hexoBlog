@@ -1,0 +1,4 @@
+User-agent: *
+Sitemap: http://www.troylc.cc/sitemap.xml
+Sitemap: http://www.troylc.cc/baidusitemap.xml.xml
+Sitemap: http://www.troylc.cc/swiftypesitemap.xml
