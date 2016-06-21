@@ -40,9 +40,7 @@
   _st('install','tDRHBKnrro54aBqnVDWe','2.0.0');
 </script>
 
-<% } %>
-
-<% if(theme.google_cse.enable) { %>
+<% } else if(theme.google_cse.enable) { %>
 <div  id="main" class="page">
   <div id='cse' style='width:100%;text-align:center'>正在加载搜索结果，请稍等。</div>
 </div>
@@ -62,4 +60,15 @@ google.setOnLoadCallback(function(){
   }
 },true);
 </script>
+<% } else if(theme.baidu_search.enable) { %>
+<div id="bdcs-frame-box"></div>
+<script type="text/javascript">
+var bdcsFrameSid="5195750798114751222";
+var bdcsFrameWidth = 552;
+var bdcsFrameWt = 1;
+var bdcsFrameHt = 1;
+var bdcsFrameResultNum = 10;
+var bdcsFrameBgColor = "#ffffff";
+</script>
+<script type="text/javascript" src="http://zhannei.baidu.com/static/js/iframe.js"></script>
 <% } %>
