@@ -24,17 +24,8 @@ $ git clone https://github.com/wuchong/jacman.git themes/jacman
 修改你的博客根目录(F:\Blog\hexo)下的_config.yml配置文件中的theme属性，将其设置为jacman。
 ```bash
 ......
-per_page: 10
-pagination_dir: page
-# Extensions
-## Plugins: https://hexo.io/plugins/
-## Themes: https://hexo.io/themes/
 #theme: landscape
-***theme: jacman***
-stylus: 
-  compress: true
-# Deployment
-Docs: https://hexo.io/docs/deployment.html
+theme: jacman
 ......
 ```
 # 部署主题jacman
@@ -43,7 +34,7 @@ Docs: https://hexo.io/docs/deployment.html
 hexo g
 hexo s
 ```
-打开本地浏览器，输入 http://localhost:4000/ 即可看见我们的主题已经更换了
+打开本地浏览器，输入`http://localhost:4000/` 即可看见我们的主题已经更换了
 ![Hexo官网主题](/images/hexo-2/usejacman.png)
 
 如果效果满意，将它部署到Github上;打开Hexo文件夹，右键Git Bash，输入
@@ -51,7 +42,7 @@ hexo s
 hexo clean   (必须要，不然有时因为缓存问题，服务器更新不了主题)
 hexo g -d
 ```
-打开自己github pages的主页(https://xxxxx.github.io)，即可看到修改后的效果
+打开自己github pages的主页(`https://xxxxx.github.io`)，即可看到修改后的效果
 
 # 优化hexo主配置
 修改你的博客根目录(F:\Blog\hexo)下的_config.yml配置
