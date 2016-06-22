@@ -7,9 +7,9 @@ tags: [hexo优化,jacman,hexo] #文章标签，多于一项时用这种格式，
 ---
 上一篇博文把我们的博客已经部署到了github pages服务上，别人可以通过网址来登陆我们的博客了，但是我们这时博客并不好看，怎么优化hexo博客，在Hexo下已经有很多人开发了各种主题给我们使用，我们只需要把他克隆过来，然后通过修改配置文件即可达到要的效果。那么我们应该怎么修改呢？
 # [Hexo官网](https://hexo.io/themes/ "hexo主题专栏")主题专栏
-![Hexo官网主题](/images/hexo-1/themes.png)
+![Hexo官网主题](/images/hexo-2/themes.png)
 可以看到有很多主题给我们选，我们只要选择喜欢的主题点击进去，然后进入到它的github地址，我们只要把这个地址复制下来(例如我是选择：jacman这个主题)
-![Hexo官网主题](/images/hexo-1/jacmangithub.png)
+![Hexo官网主题](/images/hexo-2/jacmangithub.png)
 
 
 
@@ -44,7 +44,7 @@ hexo g
 hexo s
 ```
 打开本地浏览器，输入 http://localhost:4000/ 即可看见我们的主题已经更换了
-![Hexo官网主题](/images/hexo-1/usejacman.png)
+![Hexo官网主题](/images/hexo-2/usejacman.png)
 
 如果效果满意，将它部署到Github上;打开Hexo文件夹，右键Git Bash，输入
 ```bash
