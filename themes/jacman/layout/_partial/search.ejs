@@ -53,7 +53,7 @@ var bdcsFrameBgColor = "#ffffff";
 </script>
 
 <% } %> 
-<%(theme.google_cse.enable) { %>
+<% if (theme.google_cse.enable) { %>
 <div  id="main" class="page">
   <div id='cse' style='width:100%;text-align:center'>正在加载搜索结果，请稍等。</div>
 </div>
