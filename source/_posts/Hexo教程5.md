@@ -25,7 +25,7 @@ tags: [hexo,hexo优化] #文章标签，多于一项时用这种格式，只有�
 ![添加google验证博客网站](/images/hexo-3/google-create2.png)
 不管谷歌还是百度都要先添加域名，然后验证网站，这里统一都使用文件验证，就是下载对应的html文件，放到域名根目录下，也就收博客根目录下的source下面
 ![查看本地hexo验证文件](/images/hexo-3/hexo-verify-file.png)
-然后部署到服务器,输入地址：http://www.troylc.cc/googlead0e22632f59a368.html 能访问到就可以点验证按钮。
+然后部署到服务器,输入地址：http://www.troylc.cc/googlecb7f6bfb684c40c5.html 能访问到就可以点验证按钮。
 `注`：这个验证的时候，google有可能会失败，可以等个一两天，再去验证，就好了。
 
 ## 生成站点地图sitemap
