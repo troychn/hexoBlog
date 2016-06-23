@@ -1,7 +1,7 @@
 ---
-title: Hexo教程(一)-hexo搭建 #可以改成中文的，如“新文章”
+title: Hexo教程(一)-hexo环境搭建 #可以改成中文的，如“新文章”
 date: 2016-05-31 13:50:23 #发表日期，一般不改动
-updated: 6/2/2016 10:18:20 AM 
+updated: 2016-06-02 16:50:23
 categories: hexo #文章文类
 tags: [hexo] #文章标签，多于一项时用这种格式，只有一项时使用tags: blog
 
