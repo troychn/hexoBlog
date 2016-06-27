@@ -3,7 +3,7 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site 网站
-title: troylc技术博客                   #网站标题
+title: troylc博客                   #网站标题
 subtitle: 爱生活爱编程，一起来进步吧！  #网站副标题
 description:  hello,every body!         #网站描述
 author: troylc                          #您的名字 
@@ -12,7 +12,7 @@ timezone:                               #网站时区。Hexo 默认使用您电�
 
 # URL 网址
 ## 如果您的网站存放在子目录中，例如 http://yoursite.com/blog，则请将您的 url 设为 http://yoursite.com/blog 并把 root 设为 /blog/
-url: https://www.troylc.cc/
+url: http://www.troylc.cc/
 root: /
 #permalink: :year/:month/:day/:title/
 permalink: :category/:year/:month/:day/:title.html
@@ -52,7 +52,7 @@ highlight_theme: night
 # Category & Tag  分类和标签的设置
 default_category: uncategorized   #默认分类         
 category_map:                     #分类别名 category_map 是为了让url中尽量少出现中文，做的映射。如下配置
-#    编程: programming
+    心得: experience
 #    生活: life
 #    其他: other
 tag_map:                          #标签别名
@@ -87,10 +87,10 @@ deploy:
   branch: master
 
 # 自动生成sitemap
-#sitemap:
-#path: sitemap.xml
-#baidusitemap:
-#path: baidusitemap.xml
+sitemap:
+   path: sitemap.xml
+baidusitemap:
+   path: baidusitemap.xml
 
 # Others
 index_generator:
