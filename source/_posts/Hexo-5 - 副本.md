@@ -10,7 +10,6 @@ tags: [hexo,hexo优化,jacman] #文章标签，多于一项时用这种格式，
 # 正文
 jacman主题优化之文章页优化,文章页的头尾及侧边栏和首页的一样，这里就不做说明了。主要说一下文章页中的文章内容部分的优化，顺序从上到下，从左到右进行优化
 ![文章内容页](/images/hexo-5/article-context.png)
-![文章内容页](/images/hexo-5/article-context-3.png)
 ## 文章访问量、评论数
 这里我添加到标题右下方，正文上面的地方。在themes\jacman\layout_partial\post\header.ejs中，找到
 ```html
