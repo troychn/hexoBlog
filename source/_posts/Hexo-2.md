@@ -1,5 +1,5 @@
 ---
-title: Hexo教程(二)-hexo博客jacman主题优化 #可以改成中文的，如“新文章”
+title: Hexo教程(二)-hexo-jacman主题优化 #可以改成中文的，如“新文章”
 date: 2016-05-31 18:09:23 #发表日期，一般不改动
 updated: 2016-06-21 13:09:23 #更新时间
 categories: hexo #文章文类
