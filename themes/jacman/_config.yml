@@ -1,11 +1,11 @@
 ##### Menu
 menu:
-  home: /
-  categories: /categories
-  tags: /tags
-  archives: /archives
-  life: /life
-  about: /about
+  首页(home): /
+  分类(categories): /categories
+  标签(tags): /tags
+  归档(archives): /archives
+  生活(life): /life
+  关于(about): /about
 ## you can create `tags` and `categories` folders in `../source`.
 ## And create a `index.md` file in each of them.
 ## set `front-matter`as
@@ -62,7 +62,7 @@ creative_commons: none
 
 #### Author information
 author:
-  intro_line1:  "Hello ,I'm troylc Page in github."    ## your introduction on the bottom of the page
+  intro_line1:  "攻城狮爸爸，用代码改变你的世界！"    ## your introduction on the bottom of the page
   intro_line2:  "This is my blog,believe it or not."  ## the 2nd line
   weibo_verifier: 0f81d6c8    ## e.g. 0f81d6c8 Your weibo-show widget verifier ,if you use weibo-show it is needed.
   tsina: 2705524937      ## e.g. 2705524937  Your weibo ID,It will be used in share button.

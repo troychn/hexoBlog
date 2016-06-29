@@ -179,6 +179,53 @@ hexo g -d
 在浏览器上输入即可看到我们自己的博客，别人电脑输入也可以哦。
 ![github sshkey](/images/hexo-1/view-cg.png)
 
+### 开始编写一篇博客文章
+#### 创建一个新文章：
+```bash
+$ hexo new [layout] <title>
+```
+默认的文章布局是 post ，当然你可用提供自己的布局文件。你可以编辑_config.yml 修改默认布局。
+Layout（布局）Hexo提供了3个默认布局： post 、 page 和 draft 。不同布局的文章会被保存到不同的目录，这取决于它的布局类型。 自定义布局保存到 source/_posts 文件夹。
+
+布局 | 路径
+---|---
+post | source/_posts
+page | source
+draft | source/_drafts
+
+对应三个布局，有三个相对应的模板文件(draft.md,page.md,post.md)在F:\Blog\hexo\scaffolds目录下,模板文件的格式设置以及默认值：
+
+设置 | 描述
+---|---
+layout | 布局
+title | 文章标题
+date | 发布时间，默认为文件创建时间
+updated | 文件修改时间
+comments | 是否开启评论，默认为true
+tags | 文章标签
+categories | 文章所属分类
+permalink | 文章永久链接，一般不用写，默认就行
+
+如我这里的post.md的内容为：
+```markdown
+---
+layout:  #文章布局 ---------#默认文章的模板-hexo new "title" 就会以这个模板创建文
+title: {{ title }} #文章标题
+date: {{ date }} #时间，一般不用改
+updated: {{ date }}  # 更新时间
+comments:  #是否开启评论，默认为true
+categories:  #目录分类
+tags:  #标签，格式可以是[Hexo,总结]，中间用英文逗号分开 hexo new "text"  报错YAMLException: duplicated mapping key at line 6, column 1: 因为模板中有两个tags:
+permalink:  #文章永久链接，一般不用写，默认就行 
+---
+```
+#### 创建Drafts（草稿）
+前面hexo提到一个特殊的布局： draft 。 这种布局的帖子保存到source/_drafts 文件夹。你可以使用 publish 命令移动草稿到 source/_posts文件夹。 这个命令类似于你使用了 new 。
+```bash
+$ hexo publish [layout] <title>
+```
+草稿默认不显示，你可以添加 --draft 选项或者设置 _config.yml 中的render_drafts 使hexo显示草稿。
+
 到此利用github Pages 搭建hexo静态博客就成功了，下一篇准备美化我们的博客。
 
  
