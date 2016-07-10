@@ -2,7 +2,7 @@
 title: 基于docker容器的mysql定时备份-nfs异地存储
 date: 2016-07-10 21:27:22
 updated: 2016-07-10 21:27:22
-categories: [linux,mysql]
+categories: [linux]
 tags: [linux,mysql,docker]
 
 ---
