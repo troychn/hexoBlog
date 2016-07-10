@@ -17,16 +17,34 @@ tags: [linux,mysql,docker]
 ```bash
 yum -y install nfs-utils rpcbind
 ```
-一般系统安装后，都会安装这个必备的软件的，
-设置开机启动:
+一般系统安装后，都会安装这个必备的软件的，设置开机启动:
 ```bash
 [root@master-zookeeper ~]#systemctl enable nfs 或者 systemctl enable nfs-server.service
 [root@master-zookeeper ~]#systemctl enable rpcbind
 ```
 ### 一、环境介绍： 
-服务器：centos7 192.168.159.71
-客户端：centos7 192.168.159.72
-客户端：centos7 192.168.159.73
+- 三台台Vmware虚拟机(网络模式为nat)：
+服务器：(service)192.168.159.71(centos7)
+客户端：(client1)192.168.159.72(centos7)
+客户端：(client2)192.168.159.73(centos7)
+- 升级这三台（192.168.159.71/72/73）主机的内核到最新版本。为安装最新的docker版本
+升级内核(在连网的环境下)
+```bash
+[root@localhost bin]# rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
+[root@localhost bin]# rpm -Uvh http://www.elrepo.org/elrepo-release-7.0-2.el7.elrepo.noarch.rpm
+[root@localhost bin]# yum --enablerepo=elrepo-kernel install kernel-ml
+```
+也可以通过此http://pkgs.org/download/kernel-devel网站手工下载安装
+重要：目前内核还是默认的版本，如果在这一步完成后你就直接reboot了，重启后使用的内核版本还是默认的3.10，不会使用新的4.3，想修改启动的顺序，需要进行下一步
+- 查看默认启动顺序
+```bash
+[root@localhost bin]# awk -F\' '$1=="menuentry " {print $2}' /etc/grub2.cfg
+```
+默认启动的顺序是从0开始，但我们新内核是从头插入（目前位置在0，而3.10的是在1），所以需要选择0，如果想生效最新的内核，需要
+```bash
+[root@localhost bin]# grub2-set-default 0   我这里是1
+```
+
 ### 二、服务器端配置（192.168.159.71）： 
 - 创建共享目录：
 ```bash
