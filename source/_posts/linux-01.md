@@ -35,9 +35,9 @@ yum -y install nfs-utils rpcbind
 - NFS文件配置：
 ```bash
 [root@master-zookeeper ~]# vim /etc/exports
-/nfs-data/dmp/db-bak/ 192.168.59.*(rw,no_root_squash,sync,no_subtree_check)
-/nfs-data/dmp/data/ 192.168.59.*(rw,no_root_squash,sync,no_subtree_check)
-/nfs-data/dmp/frequency/ 192.168.59.*(rw,no_root_squash,sync,no_subtree_check)
+/nfs-data/dmp/db-bak/ 192.168.159.*(rw,no_root_squash,sync,no_subtree_check)
+/nfs-data/dmp/data/ 192.168.159.*(rw,no_root_squash,sync,no_subtree_check)
+/nfs-data/dmp/frequency/ 192.168.159.*(rw,no_root_squash,sync,no_subtree_check)
 :wq(保存)```
 
 - 使配置生效：
@@ -60,21 +60,21 @@ yum -y install nfs-utils rpcbind
 ```
 - 测试挂载（两台客户端上执行以下命令）： 
 ```bash
-[root@node02 ~]# showmount -e 192.168.59.71
-Export list for 192.168.59.71:
-/nfs-data/dmp/frequency 192.168.59.*
-/nfs-data/dmp/data      192.168.59.*
-/nfs-data/dmp/db-bak    192.168.59.*
+[root@node02 ~]# showmount -e 192.168.159.71
+Export list for 192.168.159.71:
+/nfs-data/dmp/frequency 192.168.159.*
+/nfs-data/dmp/data      192.168.159.*
+/nfs-data/dmp/db-bak    192.168.159.*
 ```
 - 挂载服务器上的三个目录： 
 客户端在挂载的时候遇到的一个问题如下，可能是网络不太稳定，NFS默认是用UDP协议，换成TCP协议即可：
 ```bash
-[root@node02 ~]#  mount -t nfs 192.168.59.71:/nfs-data/dmp/db-bak /nfs-data/dmp/db-bak -o proto=tcp -o nolock
-[root@node02 ~]# mount -t nfs 192.168.59.71:/nfs-data/dmp/data /nfs-data/dmp/data -o proto=tcp -o nolock
-[root@node02 ~]# mount -t nfs 192.168.59.71:/nfs-data/dmp/frequency /nfs-data/dmp/frequency -o proto=tcp -o nolock
+[root@node02 ~]#  mount -t nfs 192.168.159.71:/nfs-data/dmp/db-bak /nfs-data/dmp/db-bak -o proto=tcp -o nolock
+[root@node02 ~]# mount -t nfs 192.168.159.71:/nfs-data/dmp/data /nfs-data/dmp/data -o proto=tcp -o nolock
+[root@node02 ~]# mount -t nfs 192.168.159.71:/nfs-data/dmp/frequency /nfs-data/dmp/frequency -o proto=tcp -o nolock
 [root@node02 ~]# mount
 ```
-两台客户端执行完以上命令后，在59.72上看挂载情况： 
+两台客户端执行完以上命令后，在159.72上看挂载情况： 
 如果信息如上显示则应该是挂载成功!
 
 ### 四、NFS加到启动项，让开机自动mount
@@ -105,7 +105,7 @@ UUID=c1781921-85a8-4237-875c-8e4ebecf0e14 /boot                   xfs     defaul
 
 命令 | 含意  
 ---|--- 
-192.168.59.71:/nfs-data/dmp/db-bak/ | 是目标NFS服务器的IP（或域名）和NFS共享的路径
+192.168.159.71:/nfs-data/dmp/db-bak/ | 是目标NFS服务器的IP（或域名）和NFS共享的路径
 /nfs-data/dmp/db-bak/ | 是NFS客户端要mount挂载的路径（一般挂载到/mnt下面某个路径，此处只是测试，就随便挂了）
 nfs | 表示挂载的文件系统类型时NFS 
 auto | 自动挂载；
