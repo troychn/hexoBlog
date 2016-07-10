@@ -2,7 +2,7 @@
 title: 基于docker容器的mysql定时备份-nfs异地存储
 date: 2016-07-10 21:27:22
 updated: 2016-07-10 21:27:22
-categories: Linux
+categories: [linux,mysql]
 tags: [linux,mysql,docker]
 
 ---
@@ -150,7 +150,7 @@ actimeo=1800 | acregmin==acregmax==acdirmin====acdirmax，都设置为1800s=30�
 #按时间生成变量strName作为文件名
 strName=`date +%Y-%m-%d-%H-%M-%S`
 #在运行在docker环境的mysql中执行备份命令 
-docker exec dmpmysql mysqldump -u root -ptalent device>/nfs-data/dmp/db-bak/$strName-device.sql
+docker exec dmpmysql mysqldump -u root -p123456 device>/nfs-data/dmp/db-bak/$strName-device.sql
 [root@node2 frequency]# chmod +x backupDmp.sh  (修改执行权限)
 ```
 - 在执行以上脚本前，需要mysql容器把/nfs-data/dmp/db-bak/挂到到容器里。所以如果是已经启动的容器，请重新挂载该目录。(参考docker容器挂载目录)
