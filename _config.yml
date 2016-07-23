@@ -94,7 +94,7 @@ baidusitemap:
 
 # Others
 index_generator:
-  per_page: 5 ##首页默认10篇文章标题 如果值为0不分页
+  per_page: 7 ##首页默认10篇文章标题 如果值为0不分页
 
 archive_generator:
     per_page: 0 ##归档页面默认10篇文章标题
