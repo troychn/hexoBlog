@@ -1,5 +1,6 @@
 ---
 title: linux系列(二)-linux相关系统进程查看及管理
+toc: true   // 在文章侧边增加文章目录
 date: 7/23/2016 5:26:15 PM 
 updated: 7/23/2016 5:26:20 PM 
 categories: [linux]
@@ -7,12 +8,12 @@ tags: [linux,shell]
 
 ---
 
-# 前言
+### 前言
 接上一篇linux文章，最近一直在学习linux相关的知识，之前也有看过相关对linux系统进程的文章，但一直没有总结和归纳。趁再次学习，把相关的知识记录下来。
 
-# 正文
+### 正文
 基于linux系统的相关进程管理命令有：ps、top、kill、
-## ps命令：
+#### ps命令：
 
 - **ps aux 查看系统中所有进程，使用BSD操作系统格式**
 
@@ -39,8 +40,8 @@ root        18  0.0  0.0      0     0 ?        S     2015   1:50 [ksoftirqd/2]
 ```
 **ps命令的输出格式说明：**
 
-格式 | 含意  
----|--- 
+格式 | 含意
+---|---
  USER | 该进程是由那个用户产生的；
  PID | 进程的ID号
  %CPU | 该进程占用的CPU资源的百分比，占用越高，进程越耗费资源
@@ -113,7 +114,7 @@ init(1)─┬─AliHids(9903)─┬─{AliHids}(9904)
         ├─gshelld(2075)─┬─{gshelld}(2082)
 ```
 
-## top命令
+#### top命令
 - **top [选项]**
 
 ```bash
@@ -241,7 +242,7 @@ q | 退出
 注：通过”shift + >”或”shift + <”可以向右或左改变排序列 
 如果只需要查看内存：可用free命令。只查看uptime信息（第一行），可用uptime命令；
 
-# 参考：
+### 参考：
 [linux怎样使用top命令查看系统状态](http://jingyan.baidu.com/article/4d58d5412917cb9dd4e9c0ed.html "没创新")
 
 ---

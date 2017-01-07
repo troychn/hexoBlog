@@ -1,5 +1,6 @@
 ---
 title: docker系列(三)Docker的图形化管理工具Shipyard
+toc: true
 date: 8/7/2016 8:33:03 PM  
 updated: 8/7/2016 8:33:06 PM 
 categories: [docker]
@@ -7,12 +8,12 @@ tags: [linux,docker]
 
 ---
 
-# 前言
+### 前言
 启动两个虚机，都部署Docker Engine，然后再其中一台上安装shipyard ，管理两个Docker Engine，其中一个Engine 贴标签为dev ,一个为online，表明开发环境或线上环境
 采用shipyard发布两个MySQL 实例，分别名字为MySQL-dev与MySQL-Online，在不同的Docker上，截图说明操作过程
 
-# 正文
-## 环境准备
+### 正文
+#### 环境准备
 1.两台Vmware虚拟机(网络模式为nat)：
 (dev)192.168.253.129(centos7)
 (online)192.168.253.134(centos7)
@@ -36,7 +37,7 @@ tags: [linux,docker]
 [root@localhost bin]# hostnamectl set-hostname online
 [root@localhost bin]# reboot 
 
-## 安装shipyard，通过官方的脚本安装
+#### 安装shipyard，通过官方的脚本安装
 1.首次部署脚本
 
 [root@dev ~]# curl -sSL https://dockerclub.net/deploy | bash -s
@@ -62,7 +63,7 @@ shipyard节点部署脚本将自动的安装key/value存储系统（etcd系统�
 3.删除shipyard系统（运行上面两步，就可以对shipyard使用）
 [root@online ~]$  curl -sSL https://dockerclub.net/deploy | ACTION=remove bash -s
 
-## shipyard使用
+#### shipyard使用
 在浏览器中验证：
 输入：http://localhost:8080/#/login（我这是做了vmware的虚拟IP映射，所以是localhost，admin/shipyard）
 节点信息：
@@ -74,5 +75,5 @@ shipyard节点部署脚本将自动的安装key/value存储系统（etcd系统�
 ![nh](/images/docker/3-7.png)
 
 
-# 参考：
+### 参考：
 

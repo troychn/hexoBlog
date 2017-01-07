@@ -1,5 +1,6 @@
 ---
 title: Hexo教程(一)-hexo环境搭建 #可以改成中文的，如“新文章”
+toc: true
 date: 2016-05-31 13:50:23 #发表日期，一般不改动
 updated: 2016-06-02 16:50:23
 categories: hexo #文章文类
@@ -7,11 +8,11 @@ tags: [hexo] #文章标签，多于一项时用这种格式，只有一项时使
 
 ---
 
-## hexo-Github Pages静态博客
-### 安装Node.js
+### hexo-Github Pages静态博客
+#### 安装Node.js
 在 Windows7 64 环境下安装 Node.js 非常简单，仅须到[官网](https://nodejs.org/en/download/ "nodejs官网")下载安装文件并执行即可完成安装
 ![nodejs官网下载](/images/hexo-1/nodejs.jpg)
-### 安装Git
+#### 安装Git
 从[git官网](https://git-scm.com/download "git下载")下载git并执行即可完成安装。[安装过程](http://jingyan.baidu.com/article/90895e0fb3495f64ed6b0b50.html "windows安装过程")。安装完后，右击鼠标选择 git bash here
 ![git窗口](/images/hexo-1/git.png)
 - Git教程：[Pro Git（中文版）](http://git.oschina.net/progit/ "git教程")
@@ -28,10 +29,10 @@ git push | 推送本地仓库的更新到远程仓库，语法git push [远程�
 git pull | 抓取远程仓库所有分支更新并合并到本地仓库  
   
 
-### hexo环境安装
+#### hexo环境安装
 Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。
 
-#### Hexo安装
+##### Hexo安装
 桌面右键鼠标，点击Git Bash Here，输入npm命令即可安装
 ```bash    
 npm install hexo-cli -g
@@ -39,7 +40,7 @@ npm install hexo --save
 #如果命令无法运行，可以尝试更换taobao的npm源，[http://npm.taobao.org](http://npm.taobao.org "淘宝npm源说明") ,请进入查看相关说明
 npm install -g cnpm --registry=https://registry.npm.taobao.org
 ```
-#### Hexo初始化配置
+##### Hexo初始化配置
 安装完成后，根据自己喜好建立目录（如F:\Blog\Hexo），直接进入F:\Blog\Hexo文件夹下右键鼠标，点击Git Bash Here，进入Git命令框，执行以下操作。
 ```bash
 $ hexo init
@@ -54,7 +55,7 @@ $ npm install
 - source 这个文件夹就是放文章的地方了，除了文章还有一些主要的资源，比如文章里的图片，文件等等东西。这个文件夹最好定期做一个备份，丢了它，整个站点就废了。
 - themes 主题文件夹。
 
-#### 安装Hexo插件
+##### 安装Hexo插件
 如果想不出错，就将下面的插件都安装完。（如果用淘宝源，请把npm换成cnpm）
 ```bash
 npm install hexo-generator-index --save
@@ -71,7 +72,7 @@ npm install hexo-renderer-stylus@0.2 --save
 npm install hexo-generator-feed@1 --save
 npm install hexo-generator-sitemap@1 --save
 ```
-#### 本地查看效果
+##### 本地查看效果
 执行下面语句，执行完即可登录localhost:4000查看效果
 ```bash
 hexo generate
@@ -80,15 +81,15 @@ hexo server
 登录localhost:4000，即可看到本地的效果如下：
 ![hexo初始化目录](/images/hexo-1/hexo-view.png)
 
-### 将博客部署Github Pages上
+#### 将博客部署Github Pages上
 本地的博客已经搭建起来了，但是目前只可以通过本地服务查看我们的博客。现在需要做的就是把本地的博客发布到Github服务器上，通过Github Pages这个功能让别人也可以访问我们的博客，而Github Pages就帮我完成了这件事情。但是Github Pages的代码就是寄存在Github上面的。所以需要在Github上面创建一个新的项目。
-#### 注册Github账户创建代码库
+##### 注册Github账户创建代码库
 1. 访问[Github](http://www.github.com/)首页
 2. 点击右上角的 Sign Up，注册自己的账户
 3. 注册完登陆后，我们就创建一个我们自己的Github Pages项目。点击New repository.创建要点如下：
 ![github reposity](/images/hexo-1/github-reposity.png)
 
-#### 配置SSH密钥
+##### 配置SSH密钥
 1. 看看是否存在SSH密钥(keys)
 首先，我们需要看看是否看看本机是否存在SSH keys,打开Git Bash,并运行:
 ```bash
@@ -160,7 +161,7 @@ Warning: Permanently added 'github.com,192.30.252.120' (RSA) to the list of know
 GitHub Help - [Generating SSH Keys](https://help.github.com/articles/generating-an-ssh-key/ "Generating an SSH key")
 Error: [Permission denied (publickey)](https://help.github.com/articles/error-permission-denied-publickey/ "Permission denied (publickey)")
 
-#### 将本地Hexo文件更新到Github库中
+##### 将本地Hexo文件更新到Github库中
 登录Github打开上面创建的的项目 username.github.io 复制地址
 ![github sshkey](/images/hexo-1/cp-githubaddr.png)
 打开你一开始创建的Hexo文件夹（如F:\Blog\Hexo），用记事本打开刚文件夹下的_config.yml文件
@@ -179,8 +180,8 @@ hexo g -d
 在浏览器上输入即可看到我们自己的博客，别人电脑输入也可以哦。
 ![github sshkey](/images/hexo-1/view-cg.png)
 
-### 开始编写一篇博客文章
-#### 创建一个新文章：
+#### 开始编写一篇博客文章
+##### 创建一个新文章：
 ```bash
 $ hexo new [layout] <title>
 ```
@@ -216,10 +217,10 @@ updated: {{ date }}  # 更新时间
 comments:  #是否开启评论，默认为true
 categories:  #目录分类
 tags:  #标签，格式可以是[Hexo,总结]，中间用英文逗号分开 hexo new "text"  报错YAMLException: duplicated mapping key at line 6, column 1: 因为模板中有两个tags:
-permalink:  #文章永久链接，一般不用写，默认就行 
----
+permalink:  #文章永久链接，一般不用写，默认就行
+
 ```
-#### 创建Drafts（草稿）
+##### 创建Drafts（草稿）
 前面hexo提到一个特殊的布局： draft 。 这种布局的帖子保存到source/_drafts 文件夹。你可以使用 publish 命令移动草稿到 source/_posts文件夹。 这个命令类似于你使用了 new 。
 ```bash
 $ hexo publish [layout] <title>
@@ -232,7 +233,4 @@ $ hexo publish [layout] <title>
 
 
 
-
-
----
 

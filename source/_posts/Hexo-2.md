@@ -1,29 +1,30 @@
 ---
 title: Hexo教程(二)-hexo-jacman主题优化 #可以改成中文的，如“新文章”
+toc: true
 date: 2016-05-31 18:09:23 #发表日期，一般不改动
 updated: 2016-06-21 13:09:23 #更新时间
 categories: hexo #文章文类
 tags: [hexo优化,jacman,hexo] #文章标签，多于一项时用这种格式，只有一项时使用tags: blog
 
 ---
-# 前言
+### 前言
 上一篇博文把我们的博客已经部署到了github pages服务上，别人可以通过网址来登陆我们的博客了，但是我们这时博客并不好看，怎么优化hexo博客，在Hexo下已经有很多人开发了各种主题给我们使用，我们只需要把他克隆过来，然后通过修改配置文件即可达到要的效果。那么我们应该怎么修改呢？
-# 正文
-## [Hexo官网](https://hexo.io/themes/ "hexo主题专栏")主题专栏
+### 正文
+#### [Hexo官网](https://hexo.io/themes/ "hexo主题专栏")主题专栏
 ![Hexo官网主题](/images/hexo-2/themes.png)
 可以看到有很多主题给我们选，我们只要选择喜欢的主题点击进去，然后进入到它的github地址，我们只要把这个地址复制下来(例如我是选择：jacman这个主题)
 ![Hexo官网主题](/images/hexo-2/jacmangithub.png)
 
 
 
-## 克隆主题jacman
+#### 克隆主题jacman
 再打开Hexo文件夹下的themes目录（F:\Blog\hexo\themes），右键Git Bash，在命令行输入:
 ```bash
 $ git clone https://github.com/wuchong/jacman.git themes/jacman
 ```
 等待下载完成
 
-## 启用主题jacman
+#### 启用主题jacman
 修改你的博客根目录(F:\Blog\hexo)下的_config.yml配置文件中的theme属性，将其设置为jacman。
 ```bash
 ......
@@ -31,7 +32,7 @@ $ git clone https://github.com/wuchong/jacman.git themes/jacman
 theme: jacman
 ......
 ```
-## 部署主题jacman
+#### 部署主题jacman
 返回Hexo目录，右键Git Bash，输入
 ```bash
 hexo g
@@ -47,7 +48,7 @@ hexo g -d
 ```
 打开自己github pages的主页(`https://xxxxx.github.io`)，即可看到修改后的效果
 
-## 优化hexo主配置
+#### 优化hexo主配置
 修改你的博客根目录(F:\Blog\hexo)下的_config.yml配置
 ```bash
 # Hexo Configuration
@@ -158,7 +159,7 @@ feed:
     limit: 20  ##feed文章最小数量  
 	
 ```
-## 优化jacman主题配置
+#### 优化jacman主题配置
 修改你的博客主题根目录(F:\Blog\hexo\themes\下的_config.yml配置
 ```bash
 ##### Menu  #一级菜单
@@ -313,7 +314,7 @@ swift_search:
 ```
 注意：凡是有XXXXX处的，都要换成自己对应的账号。
 
-# 参考
+### 参考
 [如何使用Jacman主题](http://jacman.wuchong.me/2014/11/20/how-to-use-jacman/ "如何使用Jacman主题")
 [jacman-github](https://github.com/wuchong/jacman "jacman-github")
 

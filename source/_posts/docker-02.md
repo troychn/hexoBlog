@@ -1,23 +1,25 @@
 ---
-title: docker系列(二)使用Docker Remote API
-date: 7/31/2016 1:10:36 PM  
-updated: 7/31/2016 1:10:40 PM 
+title: docker系列(二)使用Docker-Remote-API
+toc: true   # 在文章侧边增加文章目录
+date: 7/31/2016 1:10:36 PM
+updated: 7/31/2016 1:10:40 PM
 categories: [docker]
 tags: [linux,docker]
 
 ---
+### 前言
+Docker Remote API是一个取代远程命令行界面（rcli）的REST API。我们将使用命令行工具curl来处理url相关操作。curl可以发送请求、获取以及发送数据、检索信息。是docker自带的一个rest api 管理docker所有的操作都有对应的http rest API可供操作。下面简单说一下API的操作
 
-# 前言
-docker所有的操作都有对应的http rest API可供操作。下面简单说一下API的操作
+### 正文
+#### 环境
 
-# 正文
-## 环境
-主机 | 安装软件  
----|--- 
- 192.168.253.129 | 安装docker，打开docker的API访问端口，主机
- 192.168.253.131 | 安装docker,远程通过API访问docker主机的客户端
+|  主机 |  安装软件 |
+| ------------ | ------------ |
+| 192.168.253.129  | 安装docker，打开docker的API访问端口，主机  |
+| 192.168.253.131  |  安装docker,远程通过API访问docker主机的客户端 |
 
-## 配置(192.168.253.129)启动Remote API
+#### 配置(192.168.253.129)启动Remote API
+
 ```bash
 [root@localhost ~]# vim /usr/lib/systemd/system/docker.service
 [Unit]
@@ -116,11 +118,12 @@ docker宿主机上的操作，都可以通过（docker -H 192.168.253.129:2375 �
 
 
 
-## 使用远程API构建镜像，运行容器，停止容器，删除容器等。
-### 使用info接入点(类似在宿主机上输入docker info)
+#### 使用远程API构建镜像，运行容器，停止容器，删除容器等。
+##### 使用info接入点(类似在宿主机上输入docker info)
 curl http://192.168.253.129:2375/info
 ![dockerinfo](/images/docker/clipboard.png)
-### 通过API获取远程docker主机上的镜像列表（类似于输入docker images)
+
+##### 通过API获取远程docker主机上的镜像列表（类似于输入docker images)
 ```bash
 [root@localhost ~]# curl http://192.168.253.129:2375/images/json | python -mjson.tool
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
@@ -177,7 +180,8 @@ curl http://192.168.253.129:2375/info
     }
 ]
 ```
-### 获取指定的镜像：
+
+##### 获取指定的镜像：
 ```bash
 [root@localhost ~]# curl http://192.168.253.129:2375/images/2c40b0526b6358710fd09e7b8c022429268cc61703b4777e528ac9d469a07ca1/json | python -mjson.tool  
 #2c40b0526b6358710fd09e7b8c022429268cc61703b4777e528ac9d469a07ca1为镜像的ID号，可以通过上面的（curl http://192.168.253.129:2375/images/json | python -mjson.tool）查询获得。
@@ -266,7 +270,8 @@ curl http://192.168.253.129:2375/info
     "VirtualSize": 241656
 }
 ```
-### 通过API搜索镜像（类似于docker search:查询的是docker hub上的镜像）
+
+##### 通过API搜索镜像（类似于docker search:查询的是docker hub上的镜像）
 ```bash
 [root@localhost ~]#  curl "http://192.168.253.129:2375/images/search?term=tomcat" | python -mjson.tool
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
@@ -305,9 +310,10 @@ curl http://192.168.253.129:2375/info
     }
 ]
 ```
-### 列出正在运行的容器（docker ps 和docker ps -a)
+
+##### 列出正在运行的容器（docker ps 和docker ps -a)
 ```bash
-[root@localhost ~]# 
+[root@localhost ~]#
 curl -s "http://192.168.253.129:2375/containers/json"| python -mjson.tool(docker ps)
 curl http://192.168.253.129:2375/containers/json?all=1 | python -mjson.tool(docker ps -a)
 [
@@ -333,7 +339,7 @@ curl http://192.168.253.129:2375/containers/json?all=1 | python -mjson.tool(dock
 ]
 ```
 
-### 创建与启动容器
+##### 创建与启动容器
 创建容器
 ```bash
 [root@localhost ~]#  curl -X POST -H "Content-Type: application/json""http://192.168.253.129:2375/containers/create"-d '{"Image":"pengji/nginx","Hostname":"remote_nginx"}'
@@ -345,6 +351,6 @@ curl http://192.168.253.129:2375/containers/json?all=1 | python -mjson.tool(dock
 Usage of loopback devices is strongly discouraged forproduction use. Either use `--storage-opt dm.thinpooldev` or use `--storage-opt dm.no_warn_on_loop_devices=true` to suppress this warning.
 ```
 
+### 参考：
 
-# 参考：
 

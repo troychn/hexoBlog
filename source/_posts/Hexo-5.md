@@ -1,15 +1,16 @@
 ---
 title: Hexo教程(五)-hexo-jacman主题首页优化 #可以改成中文的，如“新文章”
+toc: true
 date: 2016-06-27 22:09:23 #发表日期，一般不改动
 updated: 2016-06-28 13:09:23
 categories: hexo #文章文类
 tags: [hexo,hexo优化,jacman] #文章标签，多于一项时用这种格式，只有一项时使用tags: blog
 ---
-# 前言：
+### 前言：
 上一篇说到了hexo的博客被百度和google收录的方法，虽然搜索引擎是收录了，但是我在百度上搜索我文章的标题，还是没有搜索结果，结果只有首页一个。这个不知道是什么原因，有可能是百度索引量的问题，后续再观察，再折腾吧。下面来分享一下优化jacman主题，包括首页和文章页等，
-# 正文
+### 正文
 jacman主题优化之首页优化,顺序从上到下，从左到右进行优化
-## 首页头部优化
+#### 首页头部优化
 ![头部header](/images/hexo-5/header.png)
 
 1.修改网站文字描述，修改hexo(F:\Blog\hexo\_config.yml)主配置文件_config.yml中的
@@ -110,9 +111,9 @@ baidu_search:     ## http://zn.baidu.com/  极速体验版本http://zn.baidu.com
 ```
 百度搜索极速检验版，需要百度搜索引擎收录你的网站，具体参考[《Hexo教程(四)-hexo博客被搜索引擎收录》](http://www.troylc.cc/hexo/2016/06/16/Hexo-4.html "搜索引擎收录网站")
 
-## 首页内容部分优化
+#### 首页内容部分优化
 ![内容部分优化](/images/hexo-5/index-context.png)
-### 首页文章列表的优化
+##### 首页文章列表的优化
 1.文章列表的展示方式，默认是全部展开，感觉展示文章全部内容比较没有吸引力，我关闭掉了，只展示少量摘要。修改\themes\jacman下面_config.yml中的expand改成false即可
 ```bash
 index:
@@ -267,7 +268,7 @@ feed:
 ```
 
 
-### 首页内容侧边栏优化
+##### 首页内容侧边栏优化
 
 侧边栏顺序配置：
 ```bash
@@ -342,7 +343,7 @@ author:
 ```
 第一次不知道是什么原因，要么无法显示，要么显示出现问题，耐心的多刷新，或者等待几天再去刷新。
 
-## 首页footer优化
+#### 首页footer优化
 ![尾部footer](/images/hexo-5/footer.png)
 1.修改网站的主页的头和尾的英文字体：\hexo\themes\jacman\source\css\_base\variable.styl中的font-custom-family = "covered_by_your_graceregular"修改为inherit如下:
 ```html
@@ -390,7 +391,7 @@ theme_color:          ##主题颜色
 </span>
 ```
 
-# 参考：
+### 参考：
 [如何使用 Jacman 主题](http://wuchong.me/blog/2014/11/20/how-to-use-jacman/ "如何使用 Jacman 主题 ")
 [Hexo博客Jacman主题的一些优化](http://www.tuicool.com/articles/FRrQvi3 "Hexo博客Jacman主题的一些优化")
 

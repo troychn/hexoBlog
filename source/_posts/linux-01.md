@@ -1,5 +1,6 @@
 ---
 title: linux系列(一)-linux下的mysql定时备份-nfs异地存储
+toc: true
 date: 2016-07-10 21:27:22
 updated: 2016-07-10 21:27:22
 categories: [linux]
@@ -7,12 +8,12 @@ tags: [linux,mysql,docker]
 
 ---
 
-# 前言
+### 前言
 最近一直忙着工作方面的事，没时间来总结和更新博客，本来想法是想一周，至少两篇关于技术方面的博文，原来一起想写java方面的文章，一直没有总结好。后面的文章，都是有经过自己新手实践过。希望能和大家一起坚持下来。
 
-# 正文
+### 正文
 基于docker容器的mysql定时备份-nfs异地存储，正好是最近工作中实践过，所以拿来分享一下，
-## 首先nfs网络文件系统搭建：
+#### 首先nfs网络文件系统搭建：
 **安装：**
 ```bash
 yum -y install nfs-utils rpcbind
@@ -22,7 +23,7 @@ yum -y install nfs-utils rpcbind
 [root@master-zookeeper ~]#systemctl enable nfs 或者 systemctl enable nfs-server.service
 [root@master-zookeeper ~]#systemctl enable rpcbind
 ```
-### 一、环境介绍： 
+##### 一、环境介绍： 
 - 三台台Vmware虚拟机(网络模式为nat)：
 服务器：(service)192.168.159.71(centos7)
 客户端：(client1)192.168.159.72(centos7)
@@ -45,7 +46,7 @@ yum -y install nfs-utils rpcbind
 [root@localhost bin]# grub2-set-default 0   我这里是1
 ```
 
-### 二、服务器端配置（192.168.159.71）： 
+##### 二、服务器端配置（192.168.159.71）： 
 - 创建共享目录：
 ```bash
 [root@master-zookeeper ~]# mkdir –p /nfs-data/dmp/db-bak/ /nfs-data/dmp/data/ /nfs-data/dmp/frequency/
@@ -70,7 +71,7 @@ yum -y install nfs-utils rpcbind
 [root@master-zookeeper ~]# systemctl restart rpcbind
 [root@master-zookeeper ~]# systemctl restart nfs-server.service
 ```
-### 三、客户端挂载（192.168.159.72、192.168.159.73）： 
+##### 三、客户端挂载（192.168.159.72、192.168.159.73）： 
 
 - 创建需要挂载的目录：
 ```bash 
@@ -95,7 +96,7 @@ Export list for 192.168.159.71:
 两台客户端执行完以上命令后，在159.72上看挂载情况： 
 如果信息如上显示则应该是挂载成功!
 
-### 四、NFS加到启动项，让开机自动mount
+##### 四、NFS加到启动项，让开机自动mount
 
 在两台客户端（192.168.159.72、192.168.159.73）上执行以下操作：
 ```bash
@@ -139,8 +140,8 @@ actimeo=1800 | acregmin==acregmax==acdirmin====acdirmax，都设置为1800s=30�
 
 本次测试通过以上测试，重启后，可以自动挂载
 
-## 对Mysql进行定时备份
-### 利用linux的定时器crontab对mysql进行定时备份
+#### 对Mysql进行定时备份
+##### 利用linux的定时器crontab对mysql进行定时备份
 - crontab -e 是新建或者修改 -l是查看定时器
    通过NFS创建一个db-bak文件，做为异地备份传输（可存储在71、72、73这三台机器的/nfs-data/dmp/db-bak）。具体怎么操作，参考上面nfs网络文件系统搭建章节
 - 在db-bak文件下创建一下备份的shell脚本，内容如下
@@ -165,7 +166,7 @@ docker exec dmpmysql mysqldump -u root -p123456 device>/nfs-data/dmp/db-bak/$str
 执行以上步骤后，数据备份会每隔两自动备份，并通过NFS异地备份到别的机器上
 
 
-## Mysql定时删除上月备份
+#### Mysql定时删除上月备份
 
 - 在db-bak文件下创建一下备份的shell脚本，内容如下:
 ```bash

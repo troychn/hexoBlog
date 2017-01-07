@@ -1,5 +1,6 @@
 ---
 title: docker系列(一)docker基础命令与dockerfile文件创建镜像
+toc: true
 date: 7/17/2016 9:12:05 PM 
 updated: 7/17/2016 9:12:11 PM 
 categories: [docker]
@@ -7,11 +8,11 @@ tags: [linux,docker]
 
 ---
 
-# 前言
+### 前言
 近期烦心事太多，包括工作、生活上的。归根结底还是自己不够强大，对于博客还没有坚持一个星期两篇博文，那就先坚持一个星期一篇吧，从简单开始，从放下开始，尽量让自己每时每个，坚持一些向上的的东西。对于这篇文章，docker目前一直在用，所以总结了一些关于docker基础性的东西。
 
-# 正文
-## docker基础命令和含义
+### 正文
+#### docker基础命令和含义
 1. docker version
 显示 Docker 版本信息。
 2. docker info
@@ -77,7 +78,7 @@ docker logs -f -t --tail= "s2">"10" insane_babbage
 docker run [options "o">] <image> [ "nb">command]  "o">[arg...]
 启动一个容器，在其中运行指定命令。见下面详细说明。
 
-## docker run命令的中的参数以及含义
+#### docker run命令的中的参数以及含义
 ```bash
 docker run [options "o">] <image> [ "nb">command]  "o">[arg...]
 ```
@@ -132,10 +133,10 @@ docker run -it --volumes-from dataVol ubuntu64 /bin/bash
 -w: WORKDIR 
 container中默认的工作目录是根目录(/)。开发人员可以通过Dockerfile的WORKDIR来设定默认工作目录，操作人员可以通过"-w"来覆盖默认的工作目录。
 
-## 通过Dockerfile构建镜像
-### Dockerfiles基础说明
+#### 通过Dockerfile构建镜像
+##### Dockerfiles基础说明
 Dockerfiles是由一系列命令和参数构成的脚本，这些命令应用于基础镜像并最终创建一个新的镜像。它们简化了从头到尾的流程并极大的简化了 部署工作。Dockerfile从FROM命令开始，紧接着跟随者各种方法，命令和参数。其产出为一个新的可以用于创建容器的镜像。
-### Dockerfile指令介绍：
+##### Dockerfile指令介绍：
 **FROM**    
   语法：FROM <image>[:<tag>]
   解释：设置要制作的镜像基于哪个镜像，FROM指令必须是整个Dockerfile的第一个指令，如果指定的镜像不存在默认会自动从Docker Hub上下载。        
@@ -197,8 +198,8 @@ Dockerfiles是由一系列命令和参数构成的脚本，这些命令应用于
    ⑤ONBUILD指令不允许嵌套，例如ONBUILD ONBUILD ADD . /data是不允许的。
    ⑥ONBUILD指令不会执行其定义的FROM或MAINTAINER指令。
 
-### dockerfile案例
-#### 示例一：创建一个MongoDB的镜像
+#### dockerfile案例
+##### 示例一：创建一个MongoDB的镜像
 ```bash
 ############################################################
 # Dockerfile to build MongoDB container images
@@ -236,7 +237,7 @@ ENTRYPOINT usr/bin/mongod
 sudo docker build -t my_mongodb .
 ```
 
-#### 示例二：创建一个JAVA Tomcat的镜像
+##### 示例二：创建一个JAVA Tomcat的镜像
 ```bash
 # VERSION 0.0.1
 # 默认ubuntu server长期支持版本，当前是12.04
@@ -341,6 +342,6 @@ docker push yongboy/java7
 docker pull yongboy/java7
 剩下的步骤，就很简单了。
 
-# 参考：
+### 参考：
 [docker命令语句](http://wenku.baidu.com/link?url=wP5bW_rRwEDM71Uum8liLgL_aLTBV1JX2tjEijExkRqs-mvcSJdyhmtGoAhfU9v45LU0k0ltyzzCEk67KYxpatINlftgntGl5zRbdEgfJAO "命令")
 [dockerfile详解](http://my.oschina.net/2xixi/blog/516951 "dockerfile详解")

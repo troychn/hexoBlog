@@ -3,8 +3,8 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site 网站
-title: troylc博客                   #网站标题
-subtitle: 爱生活爱编程，一起来进步吧！  #网站副标题
+title: troyCoder                   #网站标题
+subtitle: 爱生活爱编程，分享学习工作中的知识和见解！  #网站副标题
 description:  hello,every body!         #网站描述
 author: troylc                          #您的名字 
 language: zh-CN                         #网站使用的语言
@@ -73,7 +73,8 @@ pagination_dir: page
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
 #theme: landscape
-theme: jacman
+#theme: jacman
+theme: maupassant
 stylus: 
   compress: true
 
@@ -94,7 +95,7 @@ baidusitemap:
 
 # Others
 index_generator:
-  per_page: 7 ##首页默认10篇文章标题 如果值为0不分页
+  per_page: 8 ##首页默认10篇文章标题 如果值为0不分页
 
 archive_generator:
     per_page: 0 ##归档页面默认10篇文章标题
