@@ -22,9 +22,9 @@ Jenkins
 
 
 附网上jenkins持续交付流程图
-![jenkins持续集成](http://note.youdao.com/yws/public/resource/f63aea77ab66b196c469ff330cbff084/xmlnote/CF1A4905662247D79B3FDA6FD00857DE/19125)  
+![jenkins持续集成](http://note.youdao.com/yws/public/resource/99e241ee6c7f4be7e9cd6bfb6a489fd8/xmlnote/CF1A4905662247D79B3FDA6FD00857DE/19125)  
 持续集成，持续交付各个阶段所使用的一些典型工具的使用，以及在各个阶段中的相关团队的相关活动，以下图为典型的DevOps相关的活动
-![jenkins持续集成2](http://note.youdao.com/yws/public/resource/f63aea77ab66b196c469ff330cbff084/xmlnote/6E94BDCEE7DF4243AF6DA8C9AC831B1C/19140)
+![jenkins持续集成2](http://note.youdao.com/yws/public/resource/99e241ee6c7f4be7e9cd6bfb6a489fd8/xmlnote/6E94BDCEE7DF4243AF6DA8C9AC831B1C/19140)
 
   
 ### docker环境安装
