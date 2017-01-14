@@ -294,3 +294,7 @@ Insecure Registries:
   swap     centos -wi-ao----  48.00g                                                    
   thinpool docker twi-aot---   1.32t             0.23   0.02    
 ```
+
+# 参考
+linux命令创建PV/VG/LV：[http://man.linuxde.net/pvcreate](http://man.linuxde.net/pvcreate "linux命令创建PV/VG/LV")
+docker devicemapper存储驱动官方说明: [(https://docs.docker.com/engine/userguide/storagedriver/device-mapper-driver/](https://docs.docker.com/engine/userguide/storagedriver/device-mapper-driver/ "docker devicemapper存储驱动官方说明")
