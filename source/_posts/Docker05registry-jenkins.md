@@ -8,7 +8,6 @@ tags: [linux,docker,jenkins,registry]
 
 ---
 
-### 前言
 最近项目中也是一直在用jenkins做持续集成，正好更新jenkins为最新版本及迁移原来的老环境。顺手把它记录下来，和大家一起分享（本文同样适用新入手jenkins的同学）。 
 
 ### 持续集成原理
@@ -75,15 +74,17 @@ topsecnginx                  latest                 bd299f0f0516        14 month
 #### 镜像加速器安装
 
 ==注意：==  
+
 一般由于docker hub是国外的网站，下载镜像非常慢，各位可以用国内的加载器，这里我推荐两种加载器：
-1. daocloud加载器
+
+- daocloud加载器
 
 ```
 curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://69693d08.m.daocloud.io
 ```
 该脚本可以将 --registry-mirror 加入到你的 Docker 配置文件 /etc/default/docker 中。适用于 Ubuntu14.04、Debian、CentOS6 、CentOS7、Fedora、Arch Linux、openSUSE Leap 42.1，具体地址为 [https://www.daocloud.io/mirror#accelerator-doc](https://www.daocloud.io/mirror#accelerator-doc)其他版本可能有细微不同。更多详情请[访问文档](http://guide.daocloud.io/dcs/daocloud-9153151.html)。
 
-2. 阿里云加载器  
+-  阿里云加载器  
 
 阿里云加载器是你用阿里云账号登录后，在产品与服务中有一个加速器，点击加速器出现如下内容：
 他会给没一个账号弄一个专属的加载器：我的是 专属加速器地址： https://1i186hp0.mirror.aliyuncs.com
@@ -109,7 +110,7 @@ sudo service docker restart
 ```
 
 
-#### 通过 docker-compose运行jenkins和regsitry
+#### 通过docker-compose运行jenkins和regsitry
 
 ##### docker-compose文件内容：
 

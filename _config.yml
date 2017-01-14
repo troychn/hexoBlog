@@ -38,10 +38,11 @@ render_drafts: false            #是否渲染_drafts目录下的文章，默认�
 post_asset_folder: false        #启动 Asset 文件夹
 relative_link: false            #把链接改为与根目录的相对位址，默认false
 future: true                    #显示未来的文章，默认false
+
 highlight:                      #代码块的设置
   enable: true
   line_number: true
-  auto_detect: false
+  auto_detect: true
   tab_replace:
 
 # 代码高亮主题
