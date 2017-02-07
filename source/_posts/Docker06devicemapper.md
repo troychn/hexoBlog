@@ -208,7 +208,7 @@ KillMode=process
 WantedBy=multi-user.target
 ```
 
--重启docker
+- 重启docker
 
 ```bash
 [root@localhost ~]# systemctl daemon-reload
