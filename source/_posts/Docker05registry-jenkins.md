@@ -20,10 +20,10 @@ Jenkins
 [Jenkins](https://jenkins.io/index.html)是一个用Java编写的开源的持续集成工具，提供了软件开发的持续集成服务，可监控并触发持续重复的工作，具有开源，支持多平台和插件扩展，安装简单，界面化管理等特点。
 
 
-附网上jenkins持续交付流程图
-![jenkins持续集成](http://note.youdao.com/yws/public/resource/99e241ee6c7f4be7e9cd6bfb6a489fd8/xmlnote/CF1A4905662247D79B3FDA6FD00857DE/19125)  
-持续集成，持续交付各个阶段所使用的一些典型工具的使用，以及在各个阶段中的相关团队的相关活动，以下图为典型的DevOps相关的活动
-![jenkins持续集成2](http://note.youdao.com/yws/public/resource/99e241ee6c7f4be7e9cd6bfb6a489fd8/xmlnote/6E94BDCEE7DF4243AF6DA8C9AC831B1C/19140)
+附网上jenkins持续交付流程图  
+![jenkins持续集成](/images/docker/jenkins/jenkins1-1.png)  
+持续集成，持续交付各个阶段所使用的一些典型工具的使用，以及在各个阶段中的相关团队的相关活动，以下图为典型的DevOps相关的活动  
+![jenkins持续集成2](/images/docker/jenkins/jenkins1-2.png)
 
   
 ### docker环境安装
