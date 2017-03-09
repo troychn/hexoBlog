@@ -42,7 +42,7 @@ future: true                    #显示未来的文章，默认false
 highlight:                      #代码块的设置
   enable: true
   line_number: true
-  auto_detect: true
+  auto_detect: false
   tab_replace:
 
 # 代码高亮主题
