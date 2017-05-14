@@ -32,7 +32,7 @@ tags: [spring cloud,docker,swarm,docker-compose]
 
 镜像的构建如果是maven管理的java程序，我们可以通过maven的插件来进行镜像构建，如以下几个项目，都是通过maven插件来构建的。
 首先在项目的主pom文件中加载一下docker的maven插件docker-maven-plugin，如：  
-![image](/images/spring-cloud/docker-swarm/1.png)
+![build](/images/spring-cloud/docker-swarm/1.png)
 
 ```
 <build>
@@ -88,66 +88,77 @@ tags: [spring cloud,docker,swarm,docker-compose]
 </plugin>
 ```
 
-![image](/images/spring-cloud/docker-swarm/2.png)  
+![maven的构建](/images/spring-cloud/docker-swarm/2.png)  
 执行maven的构建：  
-![image](/images/spring-cloud/docker-swarm/3.png)  
+![maven的构建](/images/spring-cloud/docker-swarm/3.png)  
 查看对应docker环境上的镜像
 
 在docker远程主机查看本地镜像，如：
-```
+
+```  
+
 [root@docker-master01 ~]# docker images
 REPOSITORY                                            TAG                       IMAGE ID            CREATED             SIZE
 tcr:5000/myhub/microservice-eureka-service            0.1.0                     032a842e950c        4 minutes ago       186 MB
 
 ```
-
-
-
+  
 - microservice-provider-userservice用户微服务镜像构建  
 在用户微服务的pom文件增加构建镜像配置，并执行install命令构建镜像     
-![image](/images/spring-cloud/docker-swarm/4.png)  
+![maven的构建](/images/spring-cloud/docker-swarm/4.png)  
 
-在docker远程主机查看本地镜像，如：
+在docker远程主机查看本地镜像，如：  
+
 ```
 [root@docker-master01 ~]# docker images
 REPOSITORY                                            TAG                       IMAGE ID            CREATED             SIZE
 tcr:5000/myhub/microservice-provider-userservice      0.1.0                     b8bf9b72c012        6 minutes ago       215 MB
 tcr:5000/myhub/microservice-eureka-service            0.1.0                     032a842e950c        36 minutes ago      186 MB
-```  
+
+```   
+
   
 - microservice-consumer-productservice商品微服务镜像构建  
 在商品微服务的pom文件增加构建镜像的配置，并执行install命令构建镜像   
-![image](/images/spring-cloud/docker-swarm/5.png)  
+![maven的构建](/images/spring-cloud/docker-swarm/5.png)  
 
-在docker远程主机查看本地镜像，如：
+在docker远程主机查看本地镜像，如：  
+
 ```
 [root@docker-master01 ~]# docker images
 REPOSITORY                                            TAG                       IMAGE ID            CREATED             SIZE
 tcr:5000/myhub/microservice-consumer-productservice   0.1.0                     4632254f9d3c        17 minutes ago      187 MB
 tcr:5000/myhub/microservice-provider-userservice      0.1.0                     b8bf9b72c012        27 minutes ago      215 MB
 tcr:5000/myhub/microservice-eureka-service            0.1.0                     032a842e950c        57 minutes ago      186 MB
-```
+  
+```  
+
   
 - microservice-sidecar-comment异构平台接入微服务构建代码  
-在接入微服务异构平台的接入项目中的pom文件增加构建镜像的配置，并执行install命令构建镜像   
-![image](/images/spring-cloud/docker-swarm/6.png)   
+在接入微服务异构平台的接入项目中的pom文件增加构建镜像的配置，并执行install命令构建镜像     
+![maven的构建](/images/spring-cloud/docker-swarm/6.png)   
 
-在docker远程主机查看本地镜像，如：
-```
+在docker远程主机查看本地镜像，如：  
+
+```  
+
 [root@docker-master01 ~]# docker images
 REPOSITORY                                            TAG                       IMAGE ID            CREATED             SIZE
 tcr:5000/myhub/microservice-sidecar-comment           0.1.0                     148fb0bf84e9        8 minutes ago       184 MB
 tcr:5000/myhub/microservice-consumer-productservice   0.1.0                     4632254f9d3c        17 minutes ago      187 MB
 tcr:5000/myhub/microservice-provider-userservice      0.1.0                     b8bf9b72c012        27 minutes ago      215 MB
 tcr:5000/myhub/microservice-eureka-service            0.1.0                     032a842e950c        57 minutes ago      186 MB
+  
 ```
   
 - microservice-config-service配置中心服务的构建代码  
 在微服务配置中心的项目中的pom文件增加构建镜像的配置，并执行install命令构建镜像  
-![image](/images/spring-cloud/docker-swarm/7.png)  
+![maven的构建](/images/spring-cloud/docker-swarm/7.png)  
 
 在docker远程主机查看本地镜像，如：
-```
+
+```  
+
 [root@docker-master01 ~]# docker images
 REPOSITORY                                            TAG                       IMAGE ID            CREATED             SIZE
 tcr:5000/myhub/microservice-config-service            0.1.0                     c895d68cfff0        5 minutes ago       204 MB
@@ -155,15 +166,16 @@ tcr:5000/myhub/microservice-sidecar-comment           0.1.0                     
 tcr:5000/myhub/microservice-consumer-productservice   0.1.0                     4632254f9d3c        17 minutes ago      187 MB
 tcr:5000/myhub/microservice-provider-userservice      0.1.0                     b8bf9b72c012        27 minutes ago      215 MB
 tcr:5000/myhub/microservice-eureka-service            0.1.0                     032a842e950c        57 minutes ago      186 MB
+
 ```
 
-  
 - microservice-nodejs-comment异构平台构建方法  
 此服务是用nodes编写的，和现有的微服务不是一种语言，如果要接入到微服务中，并部署到docker-swarm集群中，其一就是把自己的服务提供rest接口供微服务接入项目sidecar来配置接入，其二把编写的整个项目docker化。
 此项目的docker化，因为没有maven来管理，所以需要编写一个dockerfile文件来进行构建，并且构建的方式是通过idea工具的docker插件来操作的。  
 Dockerfile文件内容：  
 
 ```
+
 FROM node:7.7.4-alpine
 
 # Create app directory
@@ -179,18 +191,22 @@ COPY . /usr/src/app
 
 EXPOSE 3000
 CMD [ "npm", "start" ]
-```
-docker插件构建nodejs项目的镜像：
+
+```  
+
+docker插件构建nodejs项目的镜像：  
 1. 首页在idea工具中安装docker插件  
-![image](/images/spring-cloud/docker-swarm/8.png)
+![idea插件](/images/spring-cloud/docker-swarm/8.png)  
 2. 其次配置cloud连接远程docker环境  
-![image](/images/spring-cloud/docker-swarm/9.png)
+![插件配置](/images/spring-cloud/docker-swarm/9.png)  
 3. 最后通过docker控制台构建与运行镜像  
-![image](/images/spring-cloud/docker-swarm/10.png)  
-![image](/images/spring-cloud/docker-swarm/11.png)  
+![构建镜像](/images/spring-cloud/docker-swarm/10.png)  
+![构建镜像](/images/spring-cloud/docker-swarm/11.png)  
 
 在docker远程主机查看本地镜像，如：  
-```
+
+```  
+
 [root@docker-master01 ~]# docker images
 REPOSITORY                                            TAG                       IMAGE ID            CREATED             SIZE
 tcr:5000/myhub/microservice-nodejs-comment            0.1.0                     5f30b81a7df3        4 minutes ago       66.3 MB
@@ -199,12 +215,15 @@ tcr:5000/myhub/microservice-sidecar-comment           0.1.0                     
 tcr:5000/myhub/microservice-consumer-productservice   0.1.0                     4632254f9d3c        About an hour ago   187 MB
 tcr:5000/myhub/microservice-provider-userservice      0.1.0                     b8bf9b72c012        About an hour ago   215 MB
 tcr:5000/myhub/microservice-eureka-service            0.1.0                     032a842e950c        2 hours ago         186 MB
+  
 ```
 7.microservice-api-gateway微服务的API对外网关镜像构建  
-![image](/images/spring-cloud/docker-swarm/12.png)  
+![maven构建镜像](/images/spring-cloud/docker-swarm/12.png)  
 
-在docker远程主机查看本地镜像，如：
-```
+在docker远程主机查看本地镜像，如：  
+
+```  
+
 [root@docker-master01 ~]# docker images
 REPOSITORY                                            TAG                       IMAGE ID            CREATED             SIZE
 tcr:5000/myhub/microservice-api-gateway               0.1.0                     208d6656085a        2 minutes ago       184 MB
@@ -215,12 +234,14 @@ tcr:5000/myhub/microservice-consumer-productservice   0.1.0                     
 tcr:5000/myhub/microservice-provider-userservice      0.1.0                     b8bf9b72c012        2 hours ago         215 MB
 tcr:5000/myhub/microservice-eureka-service            0.1.0                     032a842e950c        2 hours ago         186 MB
 
-```
-到此运行本次微服务的所有镜像都已经构建完成。版本都为0.1.0
+```  
 
+到此运行本次微服务的所有镜像都已经构建完成。版本都为0.1.0  
+  
 ## docker-compose.yml的编写
 
-```
+```  
+
 version: "3"
 services:
   eurekaService1:      # 默认情况下，其他服务可以使用服务名称连接到该服务。因此，对于eurekaService1的节点，它需要连接http://eurekaService2/3:951X/eureka/，因此需要配置该服务的名称是eurekaService1。
@@ -424,10 +445,12 @@ services:
 networks:
   eureka-net:
     driver: overlay
+      
 ```
+  
 ## docker compose在docker-swarm中部署微服务
 
-```
+```  
 
 [root@docker-master01 docker-compose]# docker stack deploy -c docker-compose.yml microservice
 Creating network microservice_eureka-net
@@ -471,11 +494,12 @@ xjrakh9bxh0j  microservice_eurekaService2.1  tcr:5000/myhub/microservice-eureka-
 7y2nczvpi7wl  microservice_configService.1   tcr:5000/myhub/microservice-config-service:0.1.0           docker-node02    Running        Running 18 seconds ago         
 85k0gkln3k7p  microservice_kafka.1           tcr:5000/myhub/kafka:0.10.1.1                              docker-master01  Running        Running 25 seconds ago         
 csniz9pc8bbs  microservice_apiGateway.1      tcr:5000/myhub/microservice-api-gateway:0.1.0              docker-master01  Running        Running 29 seconds ago 
+
 ```
 出现以上结束，表示通过compose对docker化的微服务部署就完成了。下面我们来验证一下
 
 ## 测试相关微服务的功能
 查看一下eureka注册中心，我们可以看到所有的微服务都已经注册上来了，我们把之前每篇的spring cloud的验证环节的操作，都在此操作一下，就会看到相同的结束，这里就一一验证了，大家可根据上面的源码及部署方式自行测试一下。  
-![image](/images/spring-cloud/docker-swarm/13.png)
+![测试](/images/spring-cloud/docker-swarm/13.png)
 
 
