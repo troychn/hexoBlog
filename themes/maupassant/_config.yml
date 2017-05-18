@@ -1,0 +1,79 @@
+fancybox: true ## If you want to use fancybox please set the value to true.
+duoshuo: ## Your duoshuo_shortname, e.g. username
+disqus: ## Your disqus_shortname, e.g. username
+uyan: ## Your uyan_id. e.g. 2133574
+gentie: 7f1583d5aedb4104a3126007070841b0 ## Your gentie_productKey, e.g. fc799538c7ad4cf5a5a0c2877a90cbd7
+google_search: false ## Use Google search, true/false.
+baidu_search: false ## Use Baidu search, true/false.
+swiftype: ## Your swiftype_key, e.g. m7b11ZrsT8Me7gzApciT
+tinysou: ## Your tinysou_key, e.g. 4ac092ad8d749fdc6293
+self_search: true ## Use a jQuery-based local search engine, true/false.
+google_analytics: ## Your Google Analytics tracking id, e.g. UA-42425684-2
+baidu_analytics: b991924b21cd080f0a0e761ff1a69288 ## Your Baidu Analytics tracking id, e.g. 8006843039519956000
+show_category_count: true ## If you want to show the count of categories in the sidebar widget please set the value to true.
+toc_number: true ## If you want to add list number to toc please set the value to true.
+shareto: true ## If you want to use the share button please set the value to true.
+busuanzi: true ## If you want to use Busuanzi page views please set the value to true.
+widgets_on_small_screens: false ## Set to true to enable widgets on small screens.
+
+menu:
+  - page: home
+    directory: .
+    icon: fa-home
+  - page: archive
+    directory: archives/
+    icon: fa-archive
+  - page: history
+    directory: history/
+    icon: fa-history  
+  - page: guestbook
+    directory: guestbook/
+    icon: fa-comments  
+  - page: about
+    directory: about/
+    icon: fa-user
+  - page: rss
+    directory: atom.xml
+    icon: fa-rss
+
+widgets: ## Six widgets in sidebar provided: search, category, tag, recent_posts, rencent_comments and links.
+  - search
+  - category
+  - tag
+  - recent_posts
+  - recent_comments
+  - links
+  - flagcounter
+  - weibo
+
+links:
+  - title: 屠夫9441的博客
+    url: https://www.haomwei.com
+  - title: troylc博客
+    url: http://www.troylc.cc/
+
+
+timeline:
+  - num: 1
+    word: 2011年开始搭建个人博客
+  - num: 2
+    word: 2015年把博客通过hexo迁移到了githubpages里
+  - num: 3
+    word: 2016年开始用markdown来书写博客
+  - num: 4
+    word: 2016年7、8月份更换hexo主题，及做相关的优化功能
+  - num: 5
+    word: 2016-2017针对分类文章进行书写博客文章  
+  - num: 5
+    word: 2017开始新的写作征程
+
+search:
+  - path: search.xml
+  - field: post
+
+# Static files
+js: js
+css: css
+
+# Theme version
+version: 0.0.0
