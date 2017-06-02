@@ -1,5 +1,5 @@
 ---
-title: linux系列(三)-rancher容器平台管理-环境构建与配置
+title: RANCHER容器平台管理(一)-环境构建与配置
 toc: true   // 在文章侧边增加文章目录
 date: 6/2/2017 5:26:15 PM 
 updated: 6/2/2017 5:26:20 PM 
