@@ -1,8 +1,8 @@
 ---
 title: macOs环境下搭建hexo静态博客
 toc: true   // 在文章侧边增加文章目录
-date: 6/11/2017 5:26:15 PM 
-updated: 6/11/2017 5:26:20 PM 
+date: 6/12/2017 5:26:15 PM 
+updated: 6/12/2017 5:26:20 PM 
 categories: [macOs]
 tags: [macOs,linux,git,hexo]
 
