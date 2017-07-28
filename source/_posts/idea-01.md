@@ -1,17 +1,16 @@
 ---
 title: IntelliJ IDEA For Mac 快捷键
 toc: true   // 在文章侧边增加文章目录
-date: 6/16/2017 5:26:15 PM 
-updated: 6/12/2017 5:26:20 PM 
+date: 6/17/2017 5:26:15 PM 
+updated: 6/17/2017 5:26:20 PM 
 categories: [IntelliJ IDEA]
-tags: [macOs,IntelliJ IDEA]
+tags: [macOs,IntelliJIDEA]
 
 ---
 
-> 建议将 Mac 系统中与 IntelliJ IDEA 冲突的快捷键取消或更改，不建议改 IntelliJ IDEA 的默认快捷键。本文参考以下内容摘记下来，方便自己记忆。
-
-###  参考：
-[IntelliJ IDEA 简体中文专题教程](https://github.com/judasn/IntelliJ-IDEA-Tutorial)  
+建议将 Mac 系统中与 IntelliJ IDEA 冲突的快捷键取消或更改，不建议改 IntelliJ IDEA 的默认快捷键。本文参考以下内容摘记下来，方便自己记忆。
+**参考地址：**
+[IntelliJ IDEA 简体中文专题教程](https://github.com/judasn/IntelliJ-IDEA-Tutorial)
 [IntelliJ IDEA 官方快捷键说明](https://resources.jetbrains.com/storage/products/intellij-idea/docs/IntelliJIDEA_ReferenceCard.pdf)
 
 #### Mac键盘符号和修饰键说明
@@ -184,7 +183,6 @@ tags: [macOs,IntelliJ IDEA]
 
 #### 十一、Other（一些官方文档上没有体现的快捷键）
 - `Command + Shift +8` 竖编辑模式
-
 
 
 
