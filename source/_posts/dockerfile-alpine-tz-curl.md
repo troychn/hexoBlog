@@ -32,7 +32,7 @@ openjdk                         8u131-jdk-alpine       478bf389b75b        4 wee
 [root@registry-jenkins ~]# vim Dockerfile
 FROM openjdk:8u131-jdk-alpine
 # MAINTAINER指令允许你给将要制作的镜像设置作者信息
-MAINTAINER iucheng <liu_cheng@topsec.com.cn>
+MAINTAINER iucheng <iu_cheng@troylc.com>
 
 #ADD cacerts /etc/ssl/certs/java/cacerts
 
