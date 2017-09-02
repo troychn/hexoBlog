@@ -124,11 +124,11 @@ virbr0		8000.525400977351	yes		virbr0-nic
 
 - centos桌面版系统下运行 virt-manager，创建KVM虚拟机的管理端界面程序  
 
-![创建KVM虚拟机的管理端界面程序](/images/docker/win7-kvm/15042794157148.jpg)
+![创建KVM虚拟机的管理端界面程序](/images/rancher/win7-kvm/15042794157148.jpg)
 如果centos7安装的是mini版本的系统，这个界面是弹不出来。需要安装桌面版本
 
-![新建虚拟机](/images/docker/win7-kvm/15042837170527.jpg)
-![](/images/docker/win7-kvm/15042838698836.jpg)
+![新建虚拟机](/images/rancher/win7-kvm/15042837170527.jpg)
+![](/images/rancher/win7-kvm/15042838698836.jpg)
 运行到此，我们需要把win7的安装iso映像下载并传入到当前centos7系统中，由于我们需要在kvm虚拟机中安装win7所以需要下载win7的虚拟安装的驱动程序，不然在安装选择虚拟硬盘和虚拟网络时，都找不到对就的硬件。 
 
 - 下载映像和虚拟驱动  
@@ -136,7 +136,7 @@ win7的映像就不在这里说明下载方式了，网上搜索win7安装的iso
 这里主要说一下下载kvm安装windows虚拟驱动程序：
 通过浏览器打开`https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/virtio-win-0.1.136-1/`
   
-![下载kvm安装windows虚拟驱动程序](/images/docker/win7-kvm/15042851617902.jpg)  
+![下载kvm安装windows虚拟驱动程序](/images/rancher/win7-kvm/15042851617902.jpg)  
 下载两个文件后，传入当前系统中
 
 ```
@@ -149,25 +149,25 @@ win7的映像就不在这里说明下载方式了，网上搜索win7安装的iso
 
 - 继续安装win7-kvm虚拟机  
 
-![选择win7安装iso映像](/images/docker/win7-kvm/15042857117144.jpg)
-![选择操作系统类型及版本](/images/docker/win7-kvm/15042858163697.jpg)
-![](/images/docker/win7-kvm/15042861371348.jpg)
-![](/images/docker/win7-kvm/15042862327834.jpg)
+![选择win7安装iso映像](/images/rancher/win7-kvm/15042857117144.jpg)
+![选择操作系统类型及版本](/images/rancher/win7-kvm/15042858163697.jpg)
+![](/images/rancher/win7-kvm/15042861371348.jpg)
+![](/images/rancher/win7-kvm/15042862327834.jpg)
 
 - 安装前需要自定义一些虚拟化的配置，以便于后面的在ranchervm环境下运行kvm-win7虚拟机不出蓝屏的问题。
 
-![NIC网络配置](/images/docker/win7-kvm/15042872495377.jpg)
-![虚拟硬盘配置](/images/docker/win7-kvm/15042873659918.jpg)
-![系统启动引导配置](/images/docker/win7-kvm/15042874519000.jpg)
+![NIC网络配置](/images/rancher/win7-kvm/15042872495377.jpg)
+![虚拟硬盘配置](/images/rancher/win7-kvm/15042873659918.jpg)
+![系统启动引导配置](/images/rancher/win7-kvm/15042874519000.jpg)
 增加一个硬件IDE-CDROM2-选择前面下载的virtio-win.iso
-![](/images/docker/win7-kvm/15042878514430.jpg)
-![开始安装](/images/docker/win7-kvm/15042879820835.jpg)
+![](/images/rancher/win7-kvm/15042878514430.jpg)
+![开始安装](/images/rancher/win7-kvm/15042879820835.jpg)
 
 - 进入安装win7的界面  
 
-![win7安装界面](/images/docker/win7-kvm/15043520681409.jpg)
+![win7安装界面](/images/rancher/win7-kvm/15043520681409.jpg)
 
-![选择虚拟硬盘](/images/docker/win7-kvm/15043522644121.jpg)
+![选择虚拟硬盘](/images/rancher/win7-kvm/15043522644121.jpg)
 
 正常情况下因为没安装虚拟化的驱动程序，安装是找不到硬盘和网络的，所以需要在选择安装盘的界面，浏览安装虚拟化驱动程序，这个时候就要通过浏览找到之前加载的IDE-CDROM2中的virtio-win.isok中的内容大致如下：
 `NetKVM/`: Virtio网络驱动
@@ -184,15 +184,15 @@ win7的映像就不在这里说明下载方式了，网上搜索win7安装的iso
 `*.vfd`: 用于Windows XP下的VFD软驱镜像  
 
 我在这里主要安装网络和硬盘的驱动：viostor、NetKVM找到对应win7系统版本安装完后，就会出现安装的硬盘，后面就安步骤安装win7就可以完成kvm-win7的安装了。
-![](/images/docker/win7-kvm/15043524690030.jpg)
+![](/images/rancher/win7-kvm/15043524690030.jpg)
 安装虚拟硬盘驱动：
-![安装虚拟硬盘驱动](/images/docker/win7-kvm/15043525084334.jpg)
+![安装虚拟硬盘驱动](/images/rancher/win7-kvm/15043525084334.jpg)
 安装虚拟网络驱动：
-![](/images/docker/win7-kvm/15043526013165.jpg)
+![](/images/rancher/win7-kvm/15043526013165.jpg)
 安装完后，就会出现虚拟的硬盘的安装界面
-![](/images/docker/win7-kvm/15043526819944.jpg)
+![](/images/rancher/win7-kvm/15043526819944.jpg)
 下一步，就等待系统的安装完成：
-![](/images/docker/win7-kvm/15043532760334.jpg)
+![](/images/rancher/win7-kvm/15043532760334.jpg)
 然后在centos7下的/var/lib/libvirt/images下有刚安装好的win7-kvm虚拟机文件。
 
 ```
@@ -262,10 +262,10 @@ a926b7dd1740        rancher/ranchervm   "/var/lib/rancher/..."   2 days ago     
 anach
 ```
 打开浏览器输入：https://<KVM hostname>:8080，我们可以通过web浏览器创建虚拟机：
-![](/images/docker/win7-kvm/15043668394036.jpg)
-![](/images/docker/win7-kvm/15043669239599.jpg)
-![](/images/docker/win7-kvm/15043669629235.jpg)
-![](/images/docker/win7-kvm/15043671343957.jpg)
+![](/images/rancher/win7-kvm/15043668394036.jpg)
+![](/images/rancher/win7-kvm/15043669239599.jpg)
+![](/images/rancher/win7-kvm/15043669629235.jpg)
+![](/images/rancher/win7-kvm/15043671343957.jpg)
 至此在centos7上通过docker运行一个win7的kvm虚拟机的安装全部完成。
 
 
