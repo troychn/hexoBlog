@@ -13,32 +13,35 @@ tags: [rancher,kvm,win7,docker,linux,Dockerfile]
 
 # centos7下制作kvm的win7虚拟机  
 ## centos7上安装KVM虚拟化
+
 - 检测cpu是否支持硬件虚拟化
 
 ```
 [root@bogon ~]# grep -o -E '(vmx|svm)' /proc/cpuinfo
 vmx
 vmx
+
 ```
+
 输出vmx或svm代表支持虚拟化  否则如果什么都没输出代表cpu不支持虚拟化  
 
 - 安装KVM以及相关组件  
 
 安装 kvm 基础包    
 
-```
+```bash
 [root@bogon ~]# sudo yum install -y kvm 
 ``` 
 
 安装kvm 管理工具  
 
-```
+```bash
 [root@bogon ~]# sudo yum install -y qemu-kvm qemu-img virt-manager libvirt libvirt-python libvirt-client virt-install virt-viewer bridge-utils
 ```
 
 - 开启并运行libvirtd 服务，以及检查kvm是否加载成功
 
-```
+```bash
 [root@bogon ~]# systemctl start libvirtd
 [root@bogon ~]# systemctl enable libvirtd
 #查看KVM模块是否被正确加载
@@ -55,14 +58,14 @@ irqbypass              13503  1 kvm
 
 创建桥接网卡
 
-```
+```bash
 [root@bogon ~]# cd /etc/sysconfig/network-scripts
 [root@bogon ~]# cp ifcfg-ens33 ifcfg-br0
 ```
 
 修改 ifcfg-br0 文件  
 
-```
+```bash
 [root@bogon ~]# vim ifcfg-br0
 TYPE="Bridge" #将br0指定为桥接类型
 BOOTPROTO="static"
@@ -83,7 +86,7 @@ DNS1=192.168.188.1
 
 修改 ifcfg-ens33， ifcfg-ens33 为宿主机的物理网卡配置文件  
 
-```
+```bash
 [root@bogon ~]# vim ifcfg-ens33
 TYPE=Ethernet
 BOOTPROTO=static
@@ -94,7 +97,7 @@ BRIDGE=br0
 
 重启网络并检查网络情况：
 
-```
+```bash
 [root@bogon network-scripts]# systemctl restart network
 [root@bogon network-scripts]# ip a
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN qlen 1
@@ -146,7 +149,7 @@ win7的映像就不在这里说明下载方式了，网上搜索win7安装的iso
  
 下载两个文件后，传入当前系统中
 
-```
+```bash
 [root@bogon iso]# ll -sh
 总用量 4.2G
 4.1G -rw-r--r--. 1 qemu qemu 4.1G 8月  31 22:49 cn_windows_7_ultimate_with_sp1_x64_oem.iso
@@ -214,7 +217,7 @@ win7的映像就不在这里说明下载方式了，网上搜索win7安装的iso
 
 然后在centos7下的/var/lib/libvirt/images下有刚安装好的win7-kvm虚拟机文件。
 
-```
+```bash
 [root@localhost iso]# cd /var/lib/libvirt/images/
 [root@localhost images]# ll -sh
 总用量 12G
@@ -231,7 +234,7 @@ RancherVM镜像就已经是捆绑的标准KVM软件的docker镜像。
 
 - 制作docker版本的kvm-win7镜像，首页压缩原kvm镜像，这样可以使kvm镜像压缩50%以上的空间。
 
-```
+```bash
 [root@localhost images]# ll -sh
 总用量 17G
 4.0K -rw-r--r--. 1 root root 101 9月   1 15:26 Dockerfile
@@ -246,7 +249,7 @@ RancherVM镜像就已经是捆绑的标准KVM软件的docker镜像。
 
 通过rancher-base来构建win7-kvm的docker镜像：
 
-```
+```bash
 [root@localhost win7-vm]# vim Dockerfile 
 FROM rancher/vm-base
 COPY win7-kvm-base.gz.img /base_image/win7-kvm-base.gz.img
@@ -275,7 +278,7 @@ RancherVM镜像是Docker镜像中捆绑的标准KVM镜像，下面我们要通�
 首先，确保Docker和KVM都安装在您的系统上。按照分发特定的说明确保KVM工作。我们只需要在内核中启用KVM。我们不需要像任何用户空间的工具qemu-kvm或libvirt。centos7确保启用了KVM，我们最开始就已经讲过。
 一旦你设置了Docker和KVM，就运行：
 
-```
+```bash
 [root@localhost ~]# docker run -v /var/run:/var/run -p 8080:80 -v /var/lib/rancher/vm:/vm rancher/ranchervm
 [root@localhost ~]# docker ps
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                  NAMES
