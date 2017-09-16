@@ -138,7 +138,7 @@ $ docker run -d -p "8080:80" portainer-templates
 
 - LDAP认证
 
-![LDAP认证](/images/docker/docker-ui/15055557567875.jpg)
+![LDAP认证](/images/docker/docker-ui/portainer/15055557567875.jpg)
 
 
 
