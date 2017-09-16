@@ -26,15 +26,12 @@ vmx
 
 - 安装KVM以及相关组件  
 
-安装 kvm 基础包    
-
-```bash
-[root@bogon ~]# sudo yum install -y kvm 
-```  
-安装kvm 管理工具
-
-```bash
-[root@bogon ~]# sudo yum install -y qemu-kvm qemu-img virt-manager libvirt libvirt-python libvirt-client virt-install virt-viewer bridge-utils
+```bash  
+# 安装kvm基础包:  
+[root@bogon ~]# sudo yum install -y kvm  
+ 
+#安装kvm管理工具:    
+[root@bogon ~]# sudo yum install -y qemu-kvm qemu-img virt-manager libvirt libvirt-python libvirt-client virt-install virt-viewer bridge-utils 
 ```
 
 - 开启并运行libvirtd 服务，以及检查kvm是否加载成功
@@ -247,7 +244,7 @@ RancherVM镜像就已经是捆绑的标准KVM软件的docker镜像。
 
 通过rancher-base来构建win7-kvm的docker镜像：
 
-```bash
+```bash  
 [root@localhost win7-vm]# vim Dockerfile 
 FROM rancher/vm-base
 COPY win7-kvm-base.gz.img /base_image/win7-kvm-base.gz.img
@@ -273,11 +270,12 @@ rancher/ranchervm                latest              f3005c29aa04        21 mont
 
 # 运行并测试docker中win7系统容器
 RancherVM镜像是Docker镜像中捆绑的标准KVM镜像，下面我们要通过ranchervm来创建并运行win7的kvm镜像。
-首先，确保Docker和KVM都安装在您的系统上。按照分发特定的说明确保KVM工作。我们只需要在内核中启用KVM。我们不需要像任何用户空间的工具qemu-kvm或libvirt。centos7确保启用了KVM，我们最开始就已经讲过。
+首先，确保Docker和KVM都安装在您的系统上。按照分发特定的说明确保KVM工作。我们只需要在内核中启用KVM。我们不需要像任何用户空间的工具qemu-kvm或libvirt。centos7确保启用了KVM，我们最开始就已经讲过。  
+
 一旦你设置了Docker和KVM，就运行：
 
-```bash
-[root@localhost ~]# docker run -v /var/run:/var/run -p 8080:80 -v /var/lib/rancher/vm:/vm rancher/ranchervm
+```bash  
+[root@localhost ~]# docker run -d -v /var/run:/var/run -p 8080:80 -v /var/lib/rancher/vm:/vm rancher/ranchervm
 [root@localhost ~]# docker ps
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                  NAMES
 a926b7dd1740        rancher/ranchervm   "/var/lib/rancher/..."   2 days ago          Up 2 days           0.0.0.0:8080->80/tcp   xenodochial_b
@@ -296,23 +294,29 @@ anach
 
 ![](/images/rancher/win7-kvm/15043671343957.jpg)
 
-- docker run方式运行win7版的docker容器。
+- docker run方式运行win7版的docker容器。  
 在运行了ranchervm的机器上，运行以下命令，就可以通过命令方式运行kvm的docker容器。
 
-
-```bash
-[root@localhost ~]# docker run -d -p 3389:3389 -e "RANCHER_VM=true" --cap-add NET_ADMIN -v /var/lib/rancher/vm:/vm --device /dev/kvm:/dev/kvm --device /dev/net/tun:/dev/net/tun -v /root/docker-kvm:/base_image  --name docker-win7   rancher/vm-base -m 2048  
+```bash  
+[root@localhost ~]# docker run -d -p 3389:3389 -p 8183:8183 -e "RANCHER_VM=true" \
+--cap-add NET_ADMIN \
+-v /var/lib/rancher/vm:/vm \
+--device /dev/kvm:/dev/kvm \
+--device /dev/net/tun:/dev/net/tun \
+-v /root/win7-vm:/base_image \
+--name docker-win7 rancher/vm-base -m 2048  
 37bf25f123f4301bfc0ffc7ccde09c381753d26ffb93ed6a1eae3d97ef271df3
 [root@localhost ~]# docker ps -a
 CONTAINER ID        IMAGE               COMMAND                  CREATED              STATUS                          PORTS                  NAMES
 37bf25f123f4        rancher/vm-base     "/var/lib/rancher/..."   5 seconds ago        Up 4 seconds                    22/tcp                 docker-win7
 a926b7dd1740        rancher/ranchervm   "/var/lib/rancher/..."   4 days ago           Up 4 days                       0.0.0.0:8080->80/tcp   xenodochial_banach
-```
+```  
+
 其中-v /root/docker-kvm:/base_image的挂载目录必须放入前面我们安装的kvm虚拟机文件win7-kvm-base.gz.img，这样我们就不需要用dockerfile构建一个新的镜像出来，直接用rancher/vm-base镜像就可以运行。
 
 至此在centos7上通过docker运行一个win7的kvm虚拟机的安装全部完成。
-
-参考：
+  
+参考：  
 [ranchervm运行kvm虚拟机参考：https://github.com/rancher/vm](https://github.com/rancher/vm)  
 [安装kvm-win7的虚拟机：http://www.gblm.net/439.html](http://www.gblm.net/439.html)
 
