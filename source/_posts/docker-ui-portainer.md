@@ -59,7 +59,7 @@ ykapxftktk0x  portainer.1  portainer/portainer:latest  docker-master  Running   
 
 - 主页Dashboard：
 
-![主页Dashboard](media/15055482535001.jpg)
+![主页Dashboard](/images/docker/docker-ui/portainer/15055482535001.jpg)
 
 - 模板管理
 
@@ -135,6 +135,11 @@ $ docker run -d -p "8080:80" portainer-templates
 - 其它设置
 
 ![logo、本地模板、标签设置](/images/docker/docker-ui/portainer/15055524234336.jpg)
+
+- LDAP认证
+
+![LDAP认证](/images/docker/docker-ui/15055557567875.jpg)
+
 
 
 
