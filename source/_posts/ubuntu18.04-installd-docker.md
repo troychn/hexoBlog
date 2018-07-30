@@ -121,4 +121,69 @@ sudo /etc/docker/daemon.json
 }
 ```
 
+#### 问题：
+正式环境配置存储时报错：
+配置文件：
+
+```
+{
+  "storage-driver": "devicemapper",
+  "storage-opts": [
+    "dm.directlvm_device=/dev/sdb1",
+    "dm.thinp_percent=95",
+    "dm.thinp_metapercent=1",
+    "dm.thinp_autoextend_threshold=80",
+    "dm.thinp_autoextend_percent=20",
+    "dm.directlvm_device_force=true"
+  ],
+  "bip":"172.20.10.1/24",
+  "insecure-registries": ["tcr:5000","hub.topsec.com.cn"],
+  "registry-mirrors": ["https://1i186hp0.mirror.aliyuncs.com"]
+}
+```
+
+
+报错信息：
+
+```
+#问题1：
+(/dev/mapper/control) leaked on pvdisplay invocation. Parent PID 2940: /usr/bin/dockerd\n  Failed to find physical volume \"/dev/sdb\".\n" error="exit status 5"
+Jul 25 01:06:20 node207 dockerd[2940]: Error starting daemon: error initializing graphdriver: error looking up command `thin_check` while setting up direct lvm: exec: "thin_check": executable file not found in $PATH
+```
+解决办法：
+
+```
+Install the following packages: 安装以下包RHEL / CentOS: device-mapper-persistent-data, lvm2, and all dependencies
+$sudo yum -y install Ubuntu / Debian: thin-provisioning-tools, lvm2, and all dependencies
+$sudo apt-get -y install thin-provisioning-tools lvm2
+``` 
+-------------------------------------------------------------------------------
+```
+#问题2：
+/usr/bin/dockerd\nFile descriptor 10 (/dev/mapper/control) leaked on pvdisplay invocation. Parent PID 3951: /usr/bin/dockerd\n  Failed to find physical volume \"/dev/sdb\".\n" error="exit status 5"
+Jul 25 01:27:33 node202 dockerd[3951]: Error starting daemon: error initializing graphdriver: File descriptor 3 (socket:[78604]) leaked on pvcreate invocation. Parent PID 3951: /usr/bin/dockerd
+```
+解决办法：
+
+```
+$ sudo pvcreate /dev/sdb1Physical volume "/dev/sdb1" successfully created.
+``` 
+-------------------------------------------------------------------------------
+
+
+```
+#问题3：
+rpc
+Jul 25 01:58:35 node202 dockerd[2468]: time="2018-07-25T01:58:35.446718795Z" level=info msg="pickfirstBalancer: HandleSubConnStateChange: 0xc42021a230, CONNECTING" module=grpc
+Jul 25 01:58:35 node202 dockerd[2468]: time="2018-07-25T01:58:35.447079391Z" level=info msg="pickfirstBalancer: HandleSubConnStateChange: 0xc42021a230, READY" module=grpc
+Jul 25 01:58:35 node202 dockerd[2468]: Error starting daemon: error initializing graphdriver: /dev/sdb is not available for use with devicemapper
+Jul 25 01:58:35 node202 systemd[1]: docker.service: Main process exited, code=exited, status=1/FAILURE
+Jul 25 01:58:35 node202 systemd[1]: docker.service: Failed with result 'exit-code'.
+```
+解决办法：
+
+```
+$ sudo fdisk /dev/sdb   输入m ->n->回车->回车
+``` 
+-------------------------------------------------------------------------------
 
